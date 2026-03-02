@@ -1,0 +1,261 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* World Wide Progress Brand Colors */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+
+    /* Primary - Teal brand color #1FA89A */
+    --primary: 172 70% 39%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Peachy terracotta backgrounds */
+    --secondary: 25 85% 87%;
+    --secondary-foreground: 0 0% 10%;
+
+    /* Muted - Light grays */
+    --muted: 165 30% 96%;
+    --muted-foreground: 0 0% 30%;
+
+    /* Accent - Warm terracotta for contrast */
+    --accent: 20 70% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 165 30% 88%;
+    --input: 165 30% 88%;
+    --ring: 172 70% 39%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(172, 70%, 39%) 0%, hsl(180, 60%, 45%) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(165, 50%, 97%) 0%, hsl(0, 0%, 100%) 100%);
+    --shadow-card: 0 4px 20px -4px hsl(172 70% 39% / 0.1);
+    --shadow-card-hover: 0 12px 32px -8px hsl(172 70% 39% / 0.15);
+    --shadow-button: 0 4px 16px -4px hsl(172 70% 39% / 0.4);
+
+    /* Stats bar dark teal */
+    --stats-bg: 186 76% 20%;
+    --stats-foreground: 0 0% 100%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 186 76% 8%;
+    --foreground: 165 30% 95%;
+
+    --card: 186 70% 12%;
+    --card-foreground: 165 30% 95%;
+
+    --popover: 186 70% 12%;
+    --popover-foreground: 165 30% 95%;
+
+    --primary: 172 70% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 186 50% 15%;
+    --secondary-foreground: 165 30% 95%;
+
+    --muted: 186 40% 18%;
+    --muted-foreground: 165 20% 65%;
+
+    --accent: 20 70% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 186 40% 18%;
+    --input: 186 40% 18%;
+    --ring: 172 70% 45%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    width: 100%;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply py-16 md:py-24;
+    width: 100%;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .heading-xl {
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-foreground;
+  }
+
+  .heading-lg {
+    @apply text-2xl sm:text-3xl md:text-4xl font-bold leading-tight tracking-tight text-foreground;
+  }
+
+  .heading-md {
+    @apply text-xl sm:text-2xl font-semibold leading-snug text-foreground;
+  }
+
+  .body-lg {
+    @apply text-lg md:text-xl text-muted-foreground leading-relaxed;
+  }
+
+  .body-md {
+    @apply text-base md:text-lg text-muted-foreground leading-relaxed;
+  }
+
+  .icon-wrapper {
+    @apply w-12 h-12 rounded-xl bg-secondary flex items-center justify-center text-primary;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 ease-out hover:shadow-lg hover:-translate-y-1;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.4s ease-out forwards;
+  }
+
+  .animate-count-up {
+    animation: countUp 0.8s ease-out forwards;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-float-delayed {
+    animation: float 3s ease-in-out infinite 1.5s;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes countUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .delay-400 {
+    animation-delay: 400ms;
+  }
+}
