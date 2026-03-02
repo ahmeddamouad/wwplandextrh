@@ -68,7 +68,6 @@ This ensures proper integration with the existing design system and CSS variable
 
 ### Vite Configuration
 - SWC plugin for fast React refresh
-- `lovable-tagger` plugin in dev mode (tags components for Lovable.dev platform)
 - Port 8080, IPv6 enabled
 
 ### Form Handling

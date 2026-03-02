@@ -1,8 +1,8 @@
-# Progress Spark - World Wide Progress
+# World Wide Progress - Externalisation RH
 
 ## Project Overview
 
-Landing page for World Wide Progress, a recruitment consultancy in Morocco. Built with modern web technologies for optimal performance and user experience.
+Landing page for World Wide Progress, a recruitment and HR outsourcing consultancy in Morocco. Built with modern web technologies for optimal performance and user experience.
 
 ## Technologies
 
