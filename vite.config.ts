@@ -7,6 +7,14 @@ export default defineConfig({
   server: {
     host: "::",
     port: 8080,
+    proxy: {
+      '/api/webhook': {
+        target: 'https://n8n.eiatech.ma',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/webhook/, '/webhook-test'),
+        secure: true,
+      },
+    },
   },
   plugins: [react()],
   resolve: {

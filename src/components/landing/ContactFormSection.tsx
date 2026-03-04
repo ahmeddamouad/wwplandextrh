@@ -55,7 +55,7 @@ const ContactFormSection = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Submission failed');
+        throw new Error(`Submission failed (${response.status})`);
       }
 
       // Track lead conversion with Meta Pixel
