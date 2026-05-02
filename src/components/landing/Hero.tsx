@@ -1,5 +1,5 @@
-import { BookOpen, Users, Briefcase, Award, Target, ArrowRight } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { BookOpen, Users, Briefcase, Target, ArrowRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ShimmerButton } from '@/components/ui/shimmer-button';
 
 // Premium easing curves for authentic motion
@@ -48,7 +48,6 @@ const Hero = () => {
     { icon: Briefcase, text: 'Immersion en entreprise 2 mois' },
     { icon: Target, text: 'Approche 100% pratique' },
     { icon: Users, text: 'Profils opérationnels garantis' },
-    { icon: Award, text: 'Certification professionnelle' },
   ];
 
   const floatingStats = [
@@ -145,13 +144,13 @@ const Hero = () => {
 
           {/* RIGHT COLUMN — Video display */}
           <div className="hidden md:flex items-center justify-center relative">
-            <div className="relative w-full max-w-sm aspect-[4/5]">
+            <div className="relative w-full max-w-2xl aspect-auto h-[550px]">
 
               {/* Video element */}
               <motion.video
-                initial={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ ease: EASING.expo, duration: 1, delay: 0.3 }}
+                transition={{ ease: EASING.expo, duration: 0.8, delay: 0.2 }}
                 autoPlay
                 muted
                 loop
@@ -161,30 +160,33 @@ const Hero = () => {
                 <source src="/logo.mp4" type="video/mp4" />
               </motion.video>
 
-              {/* Floating stat chips with better entrance and interaction */}
-              {floatingStats.map((stat, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20, scale: 0.9 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  transition={{
-                    ease: EASING.bounce,
-                    duration: 0.7,
-                    delay: 0.7 + i * 0.12,
-                  }}
-                  whileHover={{
-                    scale: 1.05,
-                    boxShadow: '0 12px 32px -8px hsl(172 70% 39% / 0.2)',
-                  }}
-                  className={`absolute px-4 py-3 bg-background rounded-xl shadow-card border border-border will-change-transform z-10 ${
-                    i === 0 ? 'top-8 left-6' : i === 1 ? 'bottom-12 right-6' : 'bottom-36 left-4'
-                  }`}
-                  style={{ transform: 'translate3d(0, 0, 0)' }}
-                >
-                  <p className="text-xs text-muted-foreground font-medium">{stat.label}</p>
-                  <p className={`text-xl font-bold ${stat.color}`}>{stat.value}</p>
-                </motion.div>
-              ))}
+              {/* Floating stat chips - animated in/out like they're part of video */}
+              <AnimatePresence mode="popLayout">
+                {floatingStats.map((stat, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, scale: 0, y: 0 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0 }}
+                    transition={{
+                      ease: EASING.bounce,
+                      duration: 0.6,
+                      delay: 0.6 + i * 0.1,
+                    }}
+                    whileHover={{
+                      scale: 1.08,
+                      boxShadow: '0 16px 40px -8px hsl(172 70% 39% / 0.25)',
+                    }}
+                    className={`absolute px-4 py-3 bg-background/95 backdrop-blur-sm rounded-2xl shadow-lg border border-border/60 will-change-transform z-10 ${
+                      i === 0 ? 'top-6 left-4' : i === 1 ? 'bottom-8 right-4' : 'bottom-32 left-6'
+                    }`}
+                    style={{ transform: 'translate3d(0, 0, 0)' }}
+                  >
+                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wide">{stat.label}</p>
+                    <p className={`text-lg font-bold ${stat.color}`}>{stat.value}</p>
+                  </motion.div>
+                ))}
+              </AnimatePresence>
 
             </div>
           </div>
