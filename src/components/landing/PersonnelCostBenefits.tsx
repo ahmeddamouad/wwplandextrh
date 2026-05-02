@@ -1,4 +1,4 @@
-import { Users, DollarSign, AlertTriangle, BarChart3, MessageSquare } from 'lucide-react';
+import { Users, DollarSign, AlertTriangle, BarChart3, MessageSquare, TrendingUp, Zap } from 'lucide-react';
 
 const PersonnelCostBenefits = () => {
   const blocks = [
@@ -32,6 +32,18 @@ const PersonnelCostBenefits = () => {
       title: 'RH Opérationnelle',
       details: ['Gestion absences & retards', 'Communication managers']
     },
+    { 
+      icon: TrendingUp, 
+      number: '6',
+      title: 'Dashboard BI',
+      details: ['Power BI & Analytics', 'Tableaux de bord RH', 'Insights data-driven']
+    },
+    { 
+      icon: Zap, 
+      number: '7',
+      title: 'Intelligence Artificielle',
+      details: ['Automatisation des process RH', 'Analyse prédictive', 'Optimisation des tâches']
+    },
   ];
 
   return (
@@ -44,15 +56,15 @@ const PersonnelCostBenefits = () => {
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground">
               Contenu Pédagogique
               <br />
-              <span className="text-primary">5 Blocs Opérationnels</span>
+              <span className="text-primary">7 Modules Complets</span>
             </h2>
             <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-              Chaque bloc prépare à maîtriser une fonction RH essentielle avec des cas concrets du marché marocain.
+              Maîtrisez les fonctions RH essentielles + Power BI + Intelligence Artificielle pour accélérer vos process RH.
             </p>
           </div>
 
           {/* Blocks Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-4">
             {blocks.map((block, index) => (
               <div
                 key={index}
@@ -82,7 +94,7 @@ const PersonnelCostBenefits = () => {
           {/* Summary Message */}
           <div className="max-w-3xl mx-auto p-6 bg-primary/5 rounded-xl border border-primary/30 text-center">
             <p className="text-foreground font-semibold text-lg">
-              Maîtriser les 5 blocs = <span className="text-primary">autonomie opérationnelle garantie</span>
+              Maîtriser les 7 modules = <span className="text-primary">expertise RH + Tech garantie</span>
             </p>
           </div>
         </div>

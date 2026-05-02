@@ -16,7 +16,13 @@ const FinalCTA = () => {
   const features = [
     'Formation + immersion + coaching CV',
     'Simulation d\'entretien + accompagnement insertion',
+    'Dashboard Power BI & Intelligence Artificielle',
     'Suivi personnalisé tout au long du programme',
+  ];
+
+  const paymentOptions = [
+    { label: 'Paiement complet', amount: '8 000 DH', desc: 'Accès immédiat' },
+    { label: 'En 3 mois', amount: '8 000 DH', desc: '2 666 DH × 3' },
   ];
 
   return (
@@ -51,6 +57,13 @@ const FinalCTA = () => {
             ))}
           </div>
 
+          {/* Urgency Banner */}
+          <div className="p-3 bg-primary/10 rounded-lg border border-primary/50 text-center">
+            <p className="text-primary font-bold text-sm">
+              Réserver votre place - 10 places disponibles
+            </p>
+          </div>
+
           {/* Premium Offer Card */}
           <div className="p-8 bg-primary/5 rounded-xl border border-primary/30 space-y-6 max-w-2xl mx-auto">
             <div className="space-y-2">
@@ -68,9 +81,21 @@ const FinalCTA = () => {
               ))}
             </ul>
 
-            {/* Price */}
-            <div className="pt-4 border-t border-primary/20">
-              <p className="text-3xl font-bold text-primary">6 500 DH</p>
+            {/* Payment Options */}
+            <div className="pt-4 border-t border-primary/20 space-y-3">
+              <p className="text-sm font-semibold text-foreground">Options de paiement :</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {paymentOptions.map((option, index) => (
+                  <div
+                    key={index}
+                    className="p-3 bg-background rounded-lg border border-primary/20 text-center space-y-1"
+                  >
+                    <p className="text-sm font-semibold text-foreground">{option.label}</p>
+                    <p className="text-lg font-bold text-primary">{option.amount}</p>
+                    <p className="text-xs text-muted-foreground">{option.desc}</p>
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* CTA Button */}
