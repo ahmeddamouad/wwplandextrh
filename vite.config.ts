@@ -19,6 +19,11 @@ export default defineConfig({
     },
   },
   plugins: [react()],
+  optimizeDeps: {
+    esbuildOptions: {
+      sourcemap: false,
+    },
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

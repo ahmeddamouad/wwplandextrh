@@ -1,0 +1,407 @@
+- generic [ref=e2]:
+  - region "Notifications (F8)":
+    - list
+  - region "Notifications alt+T"
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - link "World Wide Progress" [ref=e7] [cursor=pointer]:
+          - /url: "#"
+          - img "World Wide Progress" [ref=e8]
+        - button "S'inscrire au programme" [ref=e11] [cursor=pointer]: S'inscrire au programme
+    - main [ref=e17]:
+      - generic [ref=e20]:
+        - generic [ref=e21]:
+          - generic [ref=e23]: Maroc 2026
+          - heading "Maitrisez Programme RH Accéléré" [level=1] [ref=e27]:
+            - text: Maitrisez
+            - generic [ref=e28]:
+              - text: Programme RH
+              - text: Accéléré
+          - paragraph [ref=e29]: Une initiative ambitieuse pour former des profils RH immédiatement opérationnels — combinant formation intensive et immersion terrain dans les entreprises marocaines.
+          - generic [ref=e30]:
+            - button "S'inscrire au programme" [ref=e31] [cursor=pointer]:
+              - text: S'inscrire au programme
+              - img [ref=e35]
+            - button "En savoir plus" [ref=e39] [cursor=pointer]
+          - generic [ref=e40]:
+            - generic [ref=e41]:
+              - img [ref=e42]
+              - text: Formation intensive 2 semaines
+            - generic [ref=e44]:
+              - img [ref=e45]
+              - text: Immersion en entreprise 2 mois
+            - generic [ref=e48]:
+              - img [ref=e49]
+              - text: Approche 100% pratique
+            - generic [ref=e53]:
+              - img [ref=e54]
+              - text: Profils opérationnels garantis
+            - generic [ref=e59]:
+              - img [ref=e60]
+              - text: Certification professionnelle
+        - generic [ref=e64]:
+          - img [ref=e69]
+          - generic [ref=e77]:
+            - paragraph [ref=e78]: Formation
+            - paragraph [ref=e79]: 2 sem.
+          - generic [ref=e81]:
+            - paragraph [ref=e82]: Immersion
+            - paragraph [ref=e83]: 2 mois
+          - generic [ref=e85]:
+            - paragraph [ref=e86]: Modules
+            - paragraph [ref=e87]: "7"
+      - generic [ref=e90]:
+        - generic [ref=e92]:
+          - paragraph [ref=e93]: Le marché
+          - heading "Pourquoi ce programme ? Le constat du marché" [level=2] [ref=e94]:
+            - text: Pourquoi ce programme ?
+            - text: Le constat du marché
+          - paragraph [ref=e95]: "Un marché RH en décalage : les formations restent trop théoriques, déconnectées des réalités opérationnelles."
+        - generic [ref=e96]:
+          - generic [ref=e99]:
+            - img [ref=e101]
+            - generic [ref=e104]:
+              - heading "Formations trop théoriques" [level=3] [ref=e105]
+              - paragraph [ref=e106]: Peu ancrées dans la pratique réelle — les diplômés arrivent sans repères opérationnels concrets.
+            - paragraph [ref=e108]: Principal obstacle identifié
+          - generic [ref=e109]:
+            - generic [ref=e111]:
+              - img [ref=e113]
+              - generic [ref=e118]:
+                - heading "Profils sans expérience terrain" [level=3] [ref=e119]
+                - paragraph [ref=e120]: À l'embauche sans mise en pratique concrète.
+            - generic [ref=e122]:
+              - img [ref=e124]
+              - generic [ref=e126]:
+                - heading "Fossé entre formations et attentes" [level=3] [ref=e127]
+                - paragraph [ref=e128]: Recruteurs en attente de candidats opérationnels.
+          - generic [ref=e131]:
+            - img [ref=e133]
+            - generic [ref=e136]:
+              - heading "Temps d'adaptation prolongé" [level=3] [ref=e137]
+              - paragraph [ref=e138]: Entreprises attendent des candidats opérationnels immédiatement.
+        - generic [ref=e140]:
+          - paragraph [ref=e141]: "Notre solution :"
+          - paragraph [ref=e142]: Une expérience professionnelle structurée qui transforme les profils juniors en praticiens opérationnels.
+      - generic [ref=e145]:
+        - generic [ref=e147]:
+          - paragraph [ref=e148]: Notre approche
+          - heading "Notre Positionnement Une Expérience RH Terrain" [level=2] [ref=e149]:
+            - text: Notre Positionnement
+            - text: Une Expérience RH Terrain
+          - paragraph [ref=e150]: Le Programme RH Accéléré n'est pas une formation classique. C'est une expérience professionnelle structurée qui transforme des profils juniors en praticiens RH.
+        - generic [ref=e151]:
+          - generic [ref=e153]:
+            - img [ref=e156]
+            - generic [ref=e158]:
+              - heading "Approche 100% Pratique" [level=3] [ref=e159]
+              - paragraph [ref=e160]: Aucun contenu purement théorique — cas réels du terrain RH marocain, scénarios concrets et mises en situation professionnelles.
+          - generic [ref=e162]:
+            - img [ref=e165]
+            - generic [ref=e170]:
+              - heading "Immersion Professionnelle" [level=3] [ref=e171]
+              - paragraph [ref=e172]: 2 mois d'intégration en entreprise partenaire avec missions authentiques, accompagnement structuré et feedback continu.
+          - generic [ref=e174]:
+            - img [ref=e177]
+            - generic [ref=e180]:
+              - heading "Profils Opérationnels" [level=3] [ref=e181]
+              - paragraph [ref=e182]: Capacité à gérer les fonctions RH essentielles en autonomie complète dès le premier jour en poste.
+          - generic [ref=e184]:
+            - img [ref=e187]
+            - generic [ref=e191]:
+              - heading "Suivi Structuré" [level=3] [ref=e192]
+              - paragraph [ref=e193]: Encadrement personnalisé durant les missions en entreprise avec des points réguliers et un coaching ciblé.
+        - paragraph [ref=e196]: Formation + Immersion = Transformation
+      - generic [ref=e199]:
+        - generic [ref=e201]:
+          - paragraph [ref=e202]: Programme
+          - heading "Structure du Programme en 2 Phases" [level=2] [ref=e203]:
+            - text: Structure du Programme
+            - text: en 2 Phases
+          - paragraph [ref=e204]: Une architecture en deux temps garantit une montée en compétences rapide avant une mise en situation professionnelle réelle.
+        - generic [ref=e207]:
+          - generic [ref=e209]:
+            - generic [ref=e210]:
+              - generic [ref=e212]: "1"
+              - generic [ref=e213]:
+                - paragraph [ref=e214]: Phase
+                - heading "Formation intensive" [level=3] [ref=e215]
+                - paragraph [ref=e216]: 2 semaines
+            - list [ref=e218]:
+              - listitem [ref=e219]:
+                - img [ref=e220]
+                - text: Format accéléré et orienté pratique
+              - listitem [ref=e222]:
+                - img [ref=e223]
+                - text: Apprentissage des 5 blocs opérationnels
+              - listitem [ref=e225]:
+                - img [ref=e226]
+                - text: Cas concrets du marché marocain
+          - generic [ref=e229]:
+            - generic [ref=e230]:
+              - generic [ref=e232]: "2"
+              - generic [ref=e233]:
+                - paragraph [ref=e234]: Phase
+                - heading "Immersion en entreprise" [level=3] [ref=e235]
+                - paragraph [ref=e236]: 2 mois
+            - list [ref=e238]:
+              - listitem [ref=e239]:
+                - img [ref=e240]
+                - text: Missions RH réelles avec suivi structuré
+              - listitem [ref=e242]:
+                - img [ref=e243]
+                - text: Intégration en entreprise partenaire
+              - listitem [ref=e245]:
+                - img [ref=e246]
+                - text: Mise en pratique des compétences
+        - paragraph [ref=e250]: La formation prépare, l'immersion confirme et consolide
+      - generic [ref=e251]:
+        - generic [ref=e254]:
+          - paragraph [ref=e255]: Contenu
+          - heading "Contenu Pédagogique 7 Modules Complets" [level=2] [ref=e256]:
+            - text: Contenu Pédagogique
+            - text: 7 Modules Complets
+          - paragraph [ref=e257]: Maîtrisez les fonctions RH essentielles + Power BI + Intelligence Artificielle pour accélérer vos process RH.
+        - generic [ref=e259]:
+          - generic [ref=e260]:
+            - generic [ref=e261]:
+              - generic [ref=e262]:
+                - generic [ref=e263]: "1"
+                - img [ref=e264]
+              - heading "Recrutement" [level=4] [ref=e269]
+              - list [ref=e270]:
+                - listitem [ref=e271]: Analyse du besoin & fiche de poste
+                - listitem [ref=e273]: Conduite d'entretien
+                - listitem [ref=e275]: Évaluation des candidats
+            - generic [ref=e277]:
+              - generic [ref=e278]:
+                - generic [ref=e279]: "2"
+                - img [ref=e280]
+              - heading "Administration RH" [level=4] [ref=e282]
+              - list [ref=e283]:
+                - listitem [ref=e284]: Gestion des dossiers salariés
+                - listitem [ref=e286]: Contrats de travail
+                - listitem [ref=e288]: Obligations légales
+            - generic [ref=e290]:
+              - generic [ref=e291]:
+                - generic [ref=e292]: "3"
+                - img [ref=e293]
+              - heading "Paie" [level=4] [ref=e295]
+              - list [ref=e296]:
+                - listitem [ref=e297]: Brut / Net & IR
+                - listitem [ref=e299]: Éléments variables
+                - listitem [ref=e301]: Contrôle des bulletins
+            - generic [ref=e303]:
+              - generic [ref=e304]:
+                - generic [ref=e305]: "4"
+                - img [ref=e306]
+              - heading "Gestion Disciplinaire" [level=4] [ref=e308]
+              - list [ref=e309]:
+                - listitem [ref=e310]: Avertissement & recadrage
+                - listitem [ref=e312]: Procédure disciplinaire
+            - generic [ref=e314]:
+              - generic [ref=e315]:
+                - generic [ref=e316]: "5"
+                - img [ref=e317]
+              - heading "RH Opérationnelle" [level=4] [ref=e319]
+              - list [ref=e320]:
+                - listitem [ref=e321]: Gestion absences & retards
+                - listitem [ref=e323]: Communication managers
+            - generic [ref=e325]:
+              - generic [ref=e326]:
+                - generic [ref=e327]: "6"
+                - img [ref=e328]
+              - heading "Dashboard BI" [level=4] [ref=e331]
+              - list [ref=e332]:
+                - listitem [ref=e333]: Power BI & Analytics
+                - listitem [ref=e335]: Tableaux de bord RH
+                - listitem [ref=e337]: Insights data-driven
+            - generic [ref=e339]:
+              - generic [ref=e340]:
+                - generic [ref=e341]: "7"
+                - img [ref=e342]
+              - heading "Intelligence Artificielle" [level=4] [ref=e344]
+              - list [ref=e345]:
+                - listitem [ref=e346]: Automatisation des process RH
+                - listitem [ref=e348]: Analyse prédictive
+                - listitem [ref=e350]: Optimisation des tâches
+          - generic [ref=e352]:
+            - generic [ref=e353]:
+              - generic [ref=e354]:
+                - generic [ref=e355]: "1"
+                - img [ref=e356]
+              - heading [level=4] [ref=e361]: Recrutement
+              - list [ref=e362]:
+                - listitem [ref=e363]: Analyse du besoin & fiche de poste
+                - listitem [ref=e365]: Conduite d'entretien
+                - listitem [ref=e367]: Évaluation des candidats
+            - generic [ref=e369]:
+              - generic [ref=e370]:
+                - generic [ref=e371]: "2"
+                - img [ref=e372]
+              - heading [level=4] [ref=e374]: Administration RH
+              - list [ref=e375]:
+                - listitem [ref=e376]: Gestion des dossiers salariés
+                - listitem [ref=e378]: Contrats de travail
+                - listitem [ref=e380]: Obligations légales
+            - generic [ref=e382]:
+              - generic [ref=e383]:
+                - generic [ref=e384]: "3"
+                - img [ref=e385]
+              - heading [level=4] [ref=e387]: Paie
+              - list [ref=e388]:
+                - listitem [ref=e389]: Brut / Net & IR
+                - listitem [ref=e391]: Éléments variables
+                - listitem [ref=e393]: Contrôle des bulletins
+            - generic [ref=e395]:
+              - generic [ref=e396]:
+                - generic [ref=e397]: "4"
+                - img [ref=e398]
+              - heading [level=4] [ref=e400]: Gestion Disciplinaire
+              - list [ref=e401]:
+                - listitem [ref=e402]: Avertissement & recadrage
+                - listitem [ref=e404]: Procédure disciplinaire
+            - generic [ref=e406]:
+              - generic [ref=e407]:
+                - generic [ref=e408]: "5"
+                - img [ref=e409]
+              - heading [level=4] [ref=e411]: RH Opérationnelle
+              - list [ref=e412]:
+                - listitem [ref=e413]: Gestion absences & retards
+                - listitem [ref=e415]: Communication managers
+            - generic [ref=e417]:
+              - generic [ref=e418]:
+                - generic [ref=e419]: "6"
+                - img [ref=e420]
+              - heading [level=4] [ref=e423]: Dashboard BI
+              - list [ref=e424]:
+                - listitem [ref=e425]: Power BI & Analytics
+                - listitem [ref=e427]: Tableaux de bord RH
+                - listitem [ref=e429]: Insights data-driven
+            - generic [ref=e431]:
+              - generic [ref=e432]:
+                - generic [ref=e433]: "7"
+                - img [ref=e434]
+              - heading [level=4] [ref=e436]: Intelligence Artificielle
+              - list [ref=e437]:
+                - listitem [ref=e438]: Automatisation des process RH
+                - listitem [ref=e440]: Analyse prédictive
+                - listitem [ref=e442]: Optimisation des tâches
+        - paragraph [ref=e447]: Maîtriser les 7 modules = expertise RH + Tech garantie
+      - generic [ref=e450]:
+        - generic [ref=e452]:
+          - paragraph [ref=e453]: Offre
+          - heading "Prêt à transformer votre carrière RH ?" [level=2] [ref=e454]:
+            - text: Prêt à transformer
+            - text: votre carrière RH ?
+          - paragraph [ref=e455]: Le programme s'adresse à ceux qui veulent devenir des praticiens RH opérationnels rapidement.
+        - generic [ref=e457]:
+          - generic [ref=e458]:
+            - img [ref=e459]
+            - generic [ref=e462]: Jeunes diplômés en Ressources Humaines
+          - generic [ref=e463]:
+            - img [ref=e464]
+            - generic [ref=e466]: Profils en reconversion professionnelle
+          - generic [ref=e467]:
+            - img [ref=e468]
+            - generic [ref=e473]: Assistants RH souhaitant se structurer
+        - paragraph [ref=e476]:
+          - generic [ref=e477]: ●
+          - text: Réservez votre place — 10 places disponibles
+        - generic [ref=e480]:
+          - generic [ref=e481]:
+            - heading "Offre Premium" [level=3] [ref=e482]
+            - paragraph [ref=e483]: Inclut tout pour réussir votre transformation RH
+          - list [ref=e484]:
+            - listitem [ref=e485]:
+              - img [ref=e486]
+              - generic [ref=e488]: Formation + immersion + coaching CV
+            - listitem [ref=e489]:
+              - img [ref=e490]
+              - generic [ref=e492]: Simulation d'entretien + accompagnement insertion
+            - listitem [ref=e493]:
+              - img [ref=e494]
+              - generic [ref=e496]: Dashboard Power BI & Intelligence Artificielle
+            - listitem [ref=e497]:
+              - img [ref=e498]
+              - generic [ref=e500]: Suivi personnalisé tout au long du programme
+          - generic [ref=e501]:
+            - paragraph [ref=e502]: "Options de paiement :"
+            - generic [ref=e503]:
+              - generic [ref=e504]:
+                - paragraph [ref=e505]: Paiement complet
+                - paragraph [ref=e506]: 8 000 DH
+                - paragraph [ref=e507]: Accès immédiat
+              - generic [ref=e508]:
+                - paragraph [ref=e509]: En 3 mois
+                - paragraph [ref=e510]: 8 000 DH
+                - paragraph [ref=e511]: 2 666 DH × 3
+          - button "S'inscrire au programme" [ref=e512] [cursor=pointer]:
+            - text: S'inscrire au programme
+            - img [ref=e516]
+      - generic [ref=e521]:
+        - generic [ref=e523]:
+          - paragraph [ref=e524]: Inscription
+          - heading "Rejoignez le Programme RH Accéléré" [level=2] [ref=e525]:
+            - text: Rejoignez le
+            - text: Programme RH Accéléré
+        - generic [ref=e528]:
+          - generic [ref=e529]:
+            - generic [ref=e530]:
+              - generic [ref=e531]: Nom complet*
+              - textbox "Nom complet*" [ref=e532]:
+                - /placeholder: Votre nom complet
+            - generic [ref=e533]:
+              - generic [ref=e534]: Adresse e-mail*
+              - textbox "Adresse e-mail*" [ref=e535]:
+                - /placeholder: votre@email.com
+          - generic [ref=e536]:
+            - generic [ref=e537]:
+              - text: Entreprise
+              - textbox "Entreprise" [ref=e538]:
+                - /placeholder: Nom de votre entreprise
+            - generic [ref=e539]:
+              - generic [ref=e540]: Téléphone*
+              - textbox "Téléphone*" [ref=e541]:
+                - /placeholder: +212 600 000 000
+          - generic [ref=e542]:
+            - generic [ref=e543]: Parlez-nous de vous*
+            - textbox "Parlez-nous de vous*" [ref=e544]:
+              - /placeholder: Votre profil, vos objectifs, votre expérience actuelle...
+          - button "Soumettre ma candidature" [ref=e545] [cursor=pointer]:
+            - generic [ref=e549]: Soumettre ma candidature
+    - contentinfo [ref=e552]:
+      - generic [ref=e553]:
+        - generic [ref=e554]:
+          - generic [ref=e556]:
+            - img "World Wide Progress" [ref=e557]
+            - paragraph [ref=e558]: Formation RH intensive qui transforme des profils juniors en praticiens opérationnels dans les entreprises marocaines.
+            - generic [ref=e559]:
+              - link "LinkedIn" [ref=e560] [cursor=pointer]:
+                - /url: https://www.linkedin.com/company/world-wide-progress
+                - img [ref=e561]
+                - text: LinkedIn
+              - link "Facebook" [ref=e565] [cursor=pointer]:
+                - /url: https://www.facebook.com/wwprogress/
+                - img [ref=e566]
+                - text: Facebook
+          - generic [ref=e569]:
+            - paragraph [ref=e570]: Contact
+            - list [ref=e571]:
+              - listitem [ref=e572]:
+                - img [ref=e573]
+                - generic [ref=e576]:
+                  - text: Casablanca, Maroc
+                  - text: Rabat, Maroc
+              - listitem [ref=e577]:
+                - link "contact@wwpagency.com" [ref=e578] [cursor=pointer]:
+                  - /url: mailto:contact@wwpagency.com
+                  - img [ref=e579]
+                  - text: contact@wwpagency.com
+              - listitem [ref=e582]:
+                - link "Connectez-vous avec nous" [ref=e583] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/company/world-wide-progress
+                  - img [ref=e584]
+                  - text: Connectez-vous avec nous
+        - paragraph [ref=e589]: © 2026 World Wide Progress. Tous droits réservés.

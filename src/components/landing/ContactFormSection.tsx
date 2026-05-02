@@ -6,6 +6,9 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 import { trackLead } from '@/lib/metaPixel';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Loader2 } from 'lucide-react';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 
 const ContactFormSection = () => {
   const { toast } = useToast();
@@ -76,14 +79,48 @@ const ContactFormSection = () => {
   };
 
   return (
-    <section id="contact-form" className="pt-40 pb-32 sm:pt-40 sm:pb-24 bg-gradient-to-b from-white to-primary/5 min-h-screen">
+    <section
+      id="contact-form"
+      className="pt-40 pb-32 sm:pt-40 sm:pb-24 min-h-screen"
+      style={{
+        background:
+          'radial-gradient(ellipse 80% 60% at 50% 0%, hsl(172 70% 39% / 0.06) 0%, hsl(var(--background)) 70%)',
+      }}
+    >
       <div className="container-custom">
+
+        {/* Section heading */}
+        <ScrollReveal direction="up">
+          <div className="text-center mb-12">
+            <p className="eyebrow mb-3">Inscription</p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
+              Rejoignez le
+              <br />
+              <span className="text-primary">Programme RH Accéléré</span>
+            </h2>
+          </div>
+        </ScrollReveal>
+
         <div className="max-w-3xl mx-auto">
-          <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 border border-secondary/10">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ ease: [0.16, 1, 0.3, 1], duration: 0.75, delay: 0.1 }}
+            className="bg-white rounded-2xl p-6 sm:p-8 border border-primary/10 shadow-[0_8px_40px_-12px_hsl(172_70%_39%_/_0.12)] ring-1 ring-primary/10"
+          >
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="fullName" className="text-foreground font-medium">
+
+              {/* Row 1 */}
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ ease: [0.16, 1, 0.3, 1], duration: 0.6, delay: 0.1 }}
+                className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+              >
+                <div className="field-group space-y-2">
+                  <Label htmlFor="fullName" className="text-foreground font-medium transition-colors duration-200">
                     Nom complet<span className="text-destructive">*</span>
                   </Label>
                   <Input
@@ -93,11 +130,11 @@ const ContactFormSection = () => {
                     onChange={handleChange}
                     required
                     placeholder="Votre nom complet"
-                    className="bg-background border-border"
+                    className="bg-background border-border focus-visible:ring-primary/30"
                   />
                 </div>
-                <div className="space-y-2">
-                  <Label htmlFor="email" className="text-foreground font-medium">
+                <div className="field-group space-y-2">
+                  <Label htmlFor="email" className="text-foreground font-medium transition-colors duration-200">
                     Adresse e-mail<span className="text-destructive">*</span>
                   </Label>
                   <Input
@@ -108,14 +145,21 @@ const ContactFormSection = () => {
                     onChange={handleChange}
                     required
                     placeholder="votre@email.com"
-                    className="bg-background border-border"
+                    className="bg-background border-border focus-visible:ring-primary/30"
                   />
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="company" className="text-foreground font-medium">
+              {/* Row 2 */}
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ ease: [0.16, 1, 0.3, 1], duration: 0.6, delay: 0.2 }}
+                className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+              >
+                <div className="field-group space-y-2">
+                  <Label htmlFor="company" className="text-foreground font-medium transition-colors duration-200">
                     Entreprise
                   </Label>
                   <Input
@@ -124,11 +168,11 @@ const ContactFormSection = () => {
                     value={formData.company}
                     onChange={handleChange}
                     placeholder="Nom de votre entreprise"
-                    className="bg-background border-border"
+                    className="bg-background border-border focus-visible:ring-primary/30"
                   />
                 </div>
-                <div className="space-y-2">
-                  <Label htmlFor="phone" className="text-foreground font-medium">
+                <div className="field-group space-y-2">
+                  <Label htmlFor="phone" className="text-foreground font-medium transition-colors duration-200">
                     Téléphone<span className="text-destructive">*</span>
                   </Label>
                   <Input
@@ -139,13 +183,20 @@ const ContactFormSection = () => {
                     onChange={handleChange}
                     required
                     placeholder="+212 600 000 000"
-                    className="bg-background border-border"
+                    className="bg-background border-border focus-visible:ring-primary/30"
                   />
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="space-y-2">
-                <Label htmlFor="message" className="text-foreground font-medium">
+              {/* Textarea */}
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ ease: [0.16, 1, 0.3, 1], duration: 0.6, delay: 0.3 }}
+                className="field-group space-y-2"
+              >
+                <Label htmlFor="message" className="text-foreground font-medium transition-colors duration-200">
                   Parlez-nous de vous<span className="text-destructive">*</span>
                 </Label>
                 <Textarea
@@ -155,10 +206,11 @@ const ContactFormSection = () => {
                   onChange={handleChange}
                   required
                   placeholder="Votre profil, vos objectifs, votre expérience actuelle..."
-                  className="bg-background border-border min-h-[120px]"
+                  className="bg-background border-border min-h-[120px] focus-visible:ring-primary/30"
                 />
-              </div>
+              </motion.div>
 
+              {/* Submit button with animated state */}
               <ShimmerButton
                 type="submit"
                 background="linear-gradient(135deg, hsl(172, 70%, 39%) 0%, hsl(180, 60%, 45%) 100%)"
@@ -166,10 +218,35 @@ const ContactFormSection = () => {
                 className="w-full text-base font-semibold"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? 'Envoi en cours...' : 'Soumettre mon candidature'}
+                <AnimatePresence mode="wait">
+                  {isSubmitting ? (
+                    <motion.span
+                      key="loading"
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ ease: [0.16, 1, 0.3, 1], duration: 0.2 }}
+                      className="flex items-center gap-2"
+                    >
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      Envoi en cours...
+                    </motion.span>
+                  ) : (
+                    <motion.span
+                      key="idle"
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ ease: [0.16, 1, 0.3, 1], duration: 0.2 }}
+                    >
+                      Soumettre ma candidature
+                    </motion.span>
+                  )}
+                </AnimatePresence>
               </ShimmerButton>
+
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

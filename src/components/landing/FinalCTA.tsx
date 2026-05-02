@@ -1,5 +1,7 @@
 import { ShimmerButton } from '@/components/ui/shimmer-button';
 import { ArrowRight, Users, Zap, GraduationCap, Check } from 'lucide-react';
+import { motion } from 'framer-motion';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 
 const FinalCTA = () => {
   const scrollToForm = () => {
@@ -28,87 +30,128 @@ const FinalCTA = () => {
   return (
     <section id="contact" className="py-20 md:py-32 bg-secondary w-full overflow-hidden">
       <div className="container-custom w-full">
-        <div className="max-w-3xl mx-auto space-y-12 text-center">
+        <div className="max-w-3xl mx-auto space-y-12">
+
           {/* Section Header */}
-          <div className="space-y-4">
-            <p className="text-primary font-semibold text-sm uppercase tracking-wide">Offre</p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground">
-              Prêt à transformer
-              <br />
-              <span className="text-primary">votre carrière RH ?</span>
-            </h2>
-            <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-              Le programme s&apos;adresse à ceux qui veulent devenir des praticiens RH opérationnels rapidement.
-            </p>
-          </div>
+          <ScrollReveal direction="up">
+            <div className="space-y-4 text-center">
+              <p className="eyebrow">Offre</p>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground">
+                Prêt à transformer
+                <br />
+                <span className="text-primary">votre carrière RH ?</span>
+              </h2>
+              <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                Le programme s&apos;adresse à ceux qui veulent devenir des praticiens RH opérationnels rapidement.
+              </p>
+            </div>
+          </ScrollReveal>
 
-          {/* Target Audiences */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {targets.map((target, index) => (
-              <div
-                key={index}
-                className="p-6 bg-background/50 rounded-lg border border-primary/20 space-y-3"
-              >
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto">
-                  <target.icon className="w-6 h-6 text-primary" />
+          {/* Target audience — horizontal rows, not 3-col card grid */}
+          <ScrollReveal delay={0.1}>
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3 justify-center">
+              {targets.map((target, index) => (
+                <div
+                  key={index}
+                  className="inline-flex items-center gap-3 px-5 py-3 bg-background/60 rounded-full border border-primary/20"
+                >
+                  <target.icon className="w-4 h-4 text-primary flex-shrink-0" />
+                  <span className="text-sm text-foreground font-medium">{target.text}</span>
                 </div>
-                <p className="text-foreground font-semibold text-sm">{target.text}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* Urgency Banner */}
-          <div className="p-3 bg-primary/10 rounded-lg border border-primary/50 text-center">
-            <p className="text-primary font-bold text-sm">
-              Réserver votre place - 10 places disponibles
-            </p>
-          </div>
-
-          {/* Premium Offer Card */}
-          <div className="p-8 bg-primary/5 rounded-xl border border-primary/30 space-y-6 max-w-2xl mx-auto">
-            <div className="space-y-2">
-              <h3 className="text-2xl font-bold text-foreground">Offre Premium</h3>
-              <p className="text-muted-foreground">Inclut tout pour réussir votre transformation RH</p>
-            </div>
-
-            {/* Features List */}
-            <ul className="space-y-3 text-left">
-              {features.map((feature, index) => (
-                <li key={index} className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                  <span className="text-muted-foreground">{feature}</span>
-                </li>
               ))}
-            </ul>
+            </div>
+          </ScrollReveal>
 
-            {/* Payment Options */}
-            <div className="pt-4 border-t border-primary/20 space-y-3">
-              <p className="text-sm font-semibold text-foreground">Options de paiement :</p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {paymentOptions.map((option, index) => (
-                  <div
-                    key={index}
-                    className="p-3 bg-background rounded-lg border border-primary/20 text-center space-y-1"
-                  >
-                    <p className="text-sm font-semibold text-foreground">{option.label}</p>
-                    <p className="text-lg font-bold text-primary">{option.amount}</p>
-                    <p className="text-xs text-muted-foreground">{option.desc}</p>
+          {/* Urgency banner with subtle pulse */}
+          <ScrollReveal delay={0.15}>
+            <motion.div
+              animate={{ scale: [1, 1.015, 1] }}
+              transition={{ repeat: Infinity, duration: 2.8, ease: 'easeInOut' }}
+              className="p-4 rounded-xl bg-accent/10 border border-accent/35 text-center"
+            >
+              <p className="font-bold text-accent flex items-center justify-center gap-2 text-sm">
+                <motion.span
+                  animate={{ opacity: [1, 0.3, 1] }}
+                  transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}
+                >
+                  ●
+                </motion.span>
+                Réservez votre place — 10 places disponibles
+              </p>
+            </motion.div>
+          </ScrollReveal>
+
+          {/* Premium card — 1px gradient border */}
+          <ScrollReveal delay={0.2}>
+            <div className="p-[1px] rounded-2xl bg-gradient-to-br from-primary/30 via-border/40 to-accent/20">
+              <div className="p-8 bg-background rounded-[calc(1rem-1px)] space-y-6">
+
+                <div>
+                  <h3 className="text-2xl font-bold text-foreground">Offre Premium</h3>
+                  <p className="text-muted-foreground text-sm mt-1">
+                    Inclut tout pour réussir votre transformation RH
+                  </p>
+                </div>
+
+                {/* Features list — staggered reveal */}
+                <ul className="space-y-3">
+                  {features.map((feature, index) => (
+                    <motion.li
+                      key={index}
+                      initial={{ opacity: 0, x: -16 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{
+                        delay: 0.3 + index * 0.08,
+                        ease: [0.16, 1, 0.3, 1],
+                        duration: 0.6,
+                      }}
+                      className="flex items-start gap-3"
+                    >
+                      <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                      <span className="text-muted-foreground">{feature}</span>
+                    </motion.li>
+                  ))}
+                </ul>
+
+                {/* Payment options */}
+                <div className="pt-4 border-t border-border/50">
+                  <p className="text-sm font-semibold text-foreground mb-3">
+                    Options de paiement :
+                  </p>
+                  <div className="grid grid-cols-2 gap-3">
+                    {paymentOptions.map((option, index) => (
+                      <motion.div
+                        key={index}
+                        whileHover={{ y: -3, scale: 1.02 }}
+                        transition={{ ease: [0.16, 1, 0.3, 1], duration: 0.25 }}
+                        className="p-4 bg-primary/5 rounded-xl border border-primary/20 text-center cursor-default"
+                      >
+                        <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+                          {option.label}
+                        </p>
+                        <p className="text-2xl font-bold text-primary mt-1">{option.amount}</p>
+                        <p className="text-xs text-muted-foreground">{option.desc}</p>
+                      </motion.div>
+                    ))}
                   </div>
-                ))}
+                </div>
+
+                {/* CTA */}
+                <ShimmerButton
+                  onClick={scrollToForm}
+                  background="linear-gradient(135deg, hsl(172, 70%, 39%) 0%, hsl(180, 60%, 45%) 100%)"
+                  shimmerColor="#ffffff"
+                  className="w-full text-base font-semibold flex items-center justify-center gap-2"
+                >
+                  S&apos;inscrire au programme
+                  <ArrowRight className="w-5 h-5" />
+                </ShimmerButton>
+
               </div>
             </div>
+          </ScrollReveal>
 
-            {/* CTA Button */}
-            <ShimmerButton
-              onClick={scrollToForm}
-              background="linear-gradient(135deg, hsl(172, 70%, 39%) 0%, hsl(180, 60%, 45%) 100%)"
-              shimmerColor="#ffffff"
-              className="w-full text-base font-semibold flex items-center justify-center gap-2"
-            >
-              S&apos;inscrire au programme
-              <ArrowRight className="w-5 h-5" />
-            </ShimmerButton>
-          </div>
         </div>
       </div>
     </section>

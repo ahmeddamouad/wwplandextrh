@@ -58,6 +58,16 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Typography */
+    --font-sans: 'Outfit', system-ui, sans-serif;
+
+    /* Motion easings */
+    --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-quart: cubic-bezier(0.25, 1, 0.5, 1);
+
+    /* Tinted surface */
+    --surface-tinted: 165 25% 98%;
   }
 
   .dark {
@@ -108,6 +118,7 @@
 
   body {
     @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans);
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     overflow-x: hidden;
     margin: 0;
@@ -159,103 +170,111 @@
   }
 
   .card-hover {
-    @apply transition-all duration-300 ease-out hover:shadow-lg hover:-translate-y-1;
+    @apply transition-all duration-300 hover:-translate-y-1;
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .gradient-text {
-    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  .eyebrow {
+    @apply text-primary font-semibold text-sm uppercase tracking-widest;
+  }
+
+  .field-group:focus-within label {
+    color: hsl(var(--primary));
+    transition: color 200ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 }
 
 @layer utilities {
   .animate-fade-in {
-    animation: fadeIn 0.6s ease-out forwards;
+    animation: fadeIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
   .animate-slide-up {
-    animation: slideUp 0.6s ease-out forwards;
+    animation: slideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-slide-left {
+    animation: slideLeft 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-slide-right {
+    animation: slideRight 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
   .animate-scale-in {
-    animation: scaleIn 0.4s ease-out forwards;
+    animation: scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
-  .animate-count-up {
-    animation: countUp 0.8s ease-out forwards;
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
   }
 
   .animate-float {
-    animation: float 3s ease-in-out infinite;
+    animation: float 5s ease-in-out infinite;
   }
 
   .animate-float-delayed {
-    animation: float 3s ease-in-out infinite 1.5s;
+    animation: float 5s ease-in-out infinite 2s;
+  }
+
+  .animate-pulse-ring {
+    animation: pulseRing 2.5s cubic-bezier(0.16, 1, 0.3, 1) infinite;
   }
 
   @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
 
   @keyframes slideUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(36px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slideLeft {
+    from { opacity: 0; transform: translateX(-40px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes slideRight {
+    from { opacity: 0; transform: translateX(40px); }
+    to { opacity: 1; transform: translateX(0); }
   }
 
   @keyframes scaleIn {
-    from {
-      opacity: 0;
-      transform: scale(0.95);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
+    from { opacity: 0; transform: scale(0.92); }
+    to { opacity: 1; transform: scale(1); }
   }
 
-  @keyframes countUp {
-    from {
-      opacity: 0;
-      transform: translateY(10px) scale(0.95);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
   }
 
   @keyframes float {
-    0%, 100% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
+    0%, 100% { transform: translateY(0px); }
+    33% { transform: translateY(-12px) rotate(0.5deg); }
+    66% { transform: translateY(-6px) rotate(-0.5deg); }
   }
 
-  .delay-100 {
-    animation-delay: 100ms;
+  @keyframes pulseRing {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.25); opacity: 0.4; }
   }
 
-  .delay-200 {
-    animation-delay: 200ms;
-  }
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+  .delay-600 { animation-delay: 600ms; }
+  .delay-stagger { animation-delay: calc(var(--index, 0) * 100ms); }
 
-  .delay-300 {
-    animation-delay: 300ms;
-  }
-
-  .delay-400 {
-    animation-delay: 400ms;
-  }
+  [data-stagger] > *:nth-child(1) { --index: 0; }
+  [data-stagger] > *:nth-child(2) { --index: 1; }
+  [data-stagger] > *:nth-child(3) { --index: 2; }
+  [data-stagger] > *:nth-child(4) { --index: 3; }
+  [data-stagger] > *:nth-child(5) { --index: 4; }
+  [data-stagger] > *:nth-child(6) { --index: 5; }
+  [data-stagger] > *:nth-child(7) { --index: 6; }
 }
