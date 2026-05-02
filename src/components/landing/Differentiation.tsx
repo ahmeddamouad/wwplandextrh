@@ -2,6 +2,12 @@ import { BookOpen, Briefcase, Check } from 'lucide-react';
 import { motion } from 'framer-motion';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 
+const EASING = {
+  smooth: [0.25, 0.46, 0.45, 0.94],
+  bounce: [0.34, 1.56, 0.64, 1],
+  expo: [0.16, 1, 0.3, 1],
+};
+
 const Differentiation = () => {
   const phases = [
     {
@@ -31,7 +37,7 @@ const Differentiation = () => {
   ];
 
   return (
-    <section className="py-20 md:py-32 bg-secondary w-full overflow-hidden">
+    <section className="py-20 md:py-32 bg-secondary w-full overflow-hidden" id="program-details">
       <div className="container-custom w-full">
         <div className="space-y-16">
 
@@ -59,9 +65,9 @@ const Differentiation = () => {
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
                 viewport={{ once: true, amount: 0.8 }}
-                transition={{ ease: [0.16, 1, 0.3, 1], duration: 1.2, delay: 0.3 }}
-                style={{ originX: 0 }}
-                className="h-full bg-primary/30"
+                transition={{ ease: EASING.expo, duration: 1.4, delay: 0.2 }}
+                style={{ originX: 0, willChange: 'transform' }}
+                className="h-full bg-gradient-to-r from-primary/20 via-primary/40 to-primary/20"
               />
             </div>
 
@@ -74,12 +80,13 @@ const Differentiation = () => {
                   delay={0.15 + index * 0.15}
                 >
                   <motion.div
-                    whileHover={{ y: -6 }}
-                    transition={{ ease: [0.16, 1, 0.3, 1], duration: 0.3 }}
-                    className={`p-8 rounded-2xl border space-y-6 ${
+                    whileHover={{ y: -8, boxShadow: '0 20px 40px -8px hsl(172 70% 39% / 0.2)' }}
+                    whileTap={{ scale: 0.98 }}
+                    transition={{ ease: EASING.smooth, duration: 0.3 }}
+                    className={`p-8 rounded-2xl border space-y-6 will-change-transform transition-all ${
                       index === 0
-                        ? 'bg-background/70 border-primary/20'
-                        : 'bg-primary/5 border-primary/25'
+                        ? 'bg-background/70 border-primary/20 hover:border-primary/40'
+                        : 'bg-primary/5 border-primary/25 hover:border-primary/40'
                     }`}
                   >
                     {/* Phase header */}

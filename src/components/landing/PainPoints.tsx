@@ -2,6 +2,12 @@ import { AlertTriangle, Clock, Users, BookMarked } from 'lucide-react';
 import { motion } from 'framer-motion';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 
+const EASING = {
+  smooth: [0.25, 0.46, 0.45, 0.94],
+  bounce: [0.34, 1.56, 0.64, 1],
+  expo: [0.16, 1, 0.3, 1],
+};
+
 const PainPoints = () => {
   const painPoints = [
     {
@@ -58,19 +64,29 @@ const PainPoints = () => {
             <div className="md:row-span-2">
               <ScrollReveal direction="left" delay={0.1} className="h-full">
                 <motion.div
-                  whileHover={{ y: -5 }}
-                  transition={{ ease: [0.16, 1, 0.3, 1], duration: 0.3 }}
-                  className="h-full p-8 bg-background rounded-2xl border border-primary/15 flex flex-col gap-5"
+                  whileHover={{ y: -8, boxShadow: '0 20px 40px -8px hsl(172 70% 39% / 0.2)' }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ ease: EASING.smooth, duration: 0.3 }}
+                  className="h-full p-8 bg-background rounded-2xl border border-primary/15 hover:border-primary/30 flex flex-col gap-5 will-change-transform transition-all"
                 >
-                  <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <motion.div
+                    whileHover={{ scale: 1.1, rotate: 8 }}
+                    className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center flex-shrink-0 will-change-transform"
+                  >
                     <FirstIcon className="w-7 h-7 text-primary" />
-                  </div>
+                  </motion.div>
                   <div>
                     <h3 className="text-xl font-bold text-foreground mb-2">{first.title}</h3>
                     <p className="text-muted-foreground leading-relaxed">{first.desc}</p>
                   </div>
                   <div className="mt-auto pt-6 border-t border-primary/10">
-                    <p className="text-sm text-primary font-medium">Principal obstacle identifié</p>
+                    <motion.p
+                      initial={{ opacity: 0.7 }}
+                      whileHover={{ opacity: 1, color: 'hsl(172, 70%, 39%)' }}
+                      className="text-sm text-primary font-medium"
+                    >
+                      Principal obstacle identifié
+                    </motion.p>
                   </div>
                 </motion.div>
               </ScrollReveal>
@@ -83,14 +99,21 @@ const PainPoints = () => {
                 return (
                   <ScrollReveal key={i} direction="right" delay={0.2 + i * 0.1}>
                     <motion.div
-                      whileHover={{ y: -5 }}
-                      transition={{ ease: [0.16, 1, 0.3, 1], duration: 0.3 }}
-                      className="p-6 bg-background rounded-2xl border border-primary/15 flex items-start gap-4"
+                      whileHover={{
+                        y: -6,
+                        boxShadow: '0 12px 24px -6px hsl(172 70% 39% / 0.15)',
+                      }}
+                      whileTap={{ scale: 0.98 }}
+                      transition={{ ease: EASING.smooth, duration: 0.3 }}
+                      className="p-6 bg-background rounded-2xl border border-primary/15 hover:border-primary/30 flex items-start gap-4 will-change-transform transition-all"
                     >
-                      <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <motion.div
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center flex-shrink-0 will-change-transform"
+                      >
                         <Icon className="w-5 h-5 text-primary" />
-                      </div>
-                      <div>
+                      </motion.div>
+                      <div className="flex-1">
                         <h3 className="font-bold text-foreground mb-1">{point.title}</h3>
                         <p className="text-sm text-muted-foreground">{point.desc}</p>
                       </div>
@@ -105,14 +128,21 @@ const PainPoints = () => {
               <div className="md:col-span-2">
                 <ScrollReveal direction="up" delay={0.4}>
                   <motion.div
-                    whileHover={{ y: -5 }}
-                    transition={{ ease: [0.16, 1, 0.3, 1], duration: 0.3 }}
-                    className="p-6 bg-background rounded-2xl border border-primary/15 flex items-start gap-5"
+                    whileHover={{
+                      y: -6,
+                      boxShadow: '0 20px 40px -8px hsl(172 70% 39% / 0.15)',
+                    }}
+                    whileTap={{ scale: 0.98 }}
+                    transition={{ ease: EASING.smooth, duration: 0.3 }}
+                    className="p-6 bg-background rounded-2xl border border-primary/15 hover:border-primary/30 flex items-start gap-5 will-change-transform transition-all"
                   >
-                    <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <motion.div
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center flex-shrink-0 will-change-transform"
+                    >
                       <LastIcon className="w-5 h-5 text-primary" />
-                    </div>
-                    <div>
+                    </motion.div>
+                    <div className="flex-1">
                       <h3 className="font-bold text-foreground mb-1">{lastCard.title}</h3>
                       <p className="text-sm text-muted-foreground">{lastCard.desc}</p>
                     </div>

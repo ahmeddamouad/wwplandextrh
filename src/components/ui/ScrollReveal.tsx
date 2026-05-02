@@ -8,6 +8,11 @@ interface ScrollRevealProps {
   className?: string;
 }
 
+const EASING = {
+  smooth: [0.25, 0.46, 0.45, 0.94],
+  bounce: [0.34, 1.56, 0.64, 1],
+};
+
 const ScrollReveal = ({
   children,
   delay = 0,
@@ -22,7 +27,7 @@ const ScrollReveal = ({
       ? { opacity: 0, x: -40 }
       : direction === 'right'
       ? { opacity: 0, x: 40 }
-      : { opacity: 0, y: 36 };
+      : { opacity: 0, y: 40 };
 
   const animate = isInView
     ? { opacity: 1, x: 0, y: 0 }
@@ -33,8 +38,9 @@ const ScrollReveal = ({
       ref={ref}
       initial={initial}
       animate={animate}
-      transition={{ ease: [0.16, 1, 0.3, 1], duration: 0.75, delay }}
+      transition={{ ease: EASING.bounce, duration: 0.8, delay }}
       className={className}
+      style={{ willChange: 'opacity, transform' }}
     >
       {children}
     </motion.div>

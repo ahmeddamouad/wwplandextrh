@@ -2,19 +2,33 @@ import { BookOpen, Users, Briefcase, Award, Target, ArrowRight } from 'lucide-re
 import { motion } from 'framer-motion';
 import { ShimmerButton } from '@/components/ui/shimmer-button';
 
+// Premium easing curves for authentic motion
+const EASING = {
+  smooth: [0.25, 0.46, 0.45, 0.94],
+  bounce: [0.34, 1.56, 0.64, 1],
+  expo: [0.16, 1, 0.3, 1],
+  quart: [0.25, 1, 0.5, 1],
+};
+
 const containerVariants = {
   hidden: {},
   visible: {
-    transition: { staggerChildren: 0.12, delayChildren: 0.15 },
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.2,
+    },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 32 },
+  hidden: { opacity: 0, y: 40 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { ease: [0.16, 1, 0.3, 1], duration: 0.75 },
+    transition: {
+      ease: EASING.expo,
+      duration: 0.8,
+    },
   },
 };
 
@@ -22,6 +36,11 @@ const Hero = () => {
   const scrollToForm = () => {
     const formSection = document.getElementById('contact-form');
     formSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  const scrollToDetails = () => {
+    const detailsSection = document.getElementById('program-details');
+    detailsSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   const highlights = [
@@ -92,14 +111,19 @@ const Hero = () => {
                 onClick={scrollToForm}
                 background="linear-gradient(135deg, hsl(172, 70%, 39%) 0%, hsl(180, 60%, 45%) 100%)"
                 shimmerColor="#ffffff"
-                className="text-base font-semibold flex items-center justify-center gap-2 px-8 py-3"
+                className="text-base font-semibold flex items-center justify-center gap-2 px-8 py-3 will-change-transform"
               >
                 S&apos;inscrire au programme
                 <ArrowRight className="w-5 h-5" />
               </ShimmerButton>
-              <button className="px-6 py-3 rounded-full border border-foreground/20 text-foreground hover:border-primary hover:text-primary transition-colors duration-300 font-medium text-sm">
+              <motion.button
+                onClick={scrollToDetails}
+                whileHover={{ scale: 1.05, borderColor: 'hsl(172, 70%, 39%)' }}
+                whileTap={{ scale: 0.98 }}
+                className="px-6 py-3 rounded-full border border-foreground/20 text-foreground hover:text-primary transition-all duration-300 font-medium text-sm will-change-transform"
+              >
                 En savoir plus
-              </button>
+              </motion.button>
             </motion.div>
 
             {/* Feature Pill Badges */}
@@ -123,62 +147,100 @@ const Hero = () => {
           <div className="hidden md:flex items-center justify-center relative">
             <div className="relative w-full max-w-sm aspect-[4/5]">
 
-              {/* Background shape */}
+              {/* Background shape with morphing animation */}
               <motion.div
-                initial={{ opacity: 0, scale: 0.92 }}
+                initial={{ opacity: 0, scale: 0.9, borderRadius: '20px' }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ ease: [0.16, 1, 0.3, 1], duration: 0.9, delay: 0.4 }}
-                className="absolute inset-0 bg-primary/8 rounded-[40px]"
+                transition={{ ease: EASING.expo, duration: 1, delay: 0.3 }}
+                className="absolute inset-0 bg-gradient-to-br from-primary/8 to-primary/4 rounded-[40px] will-change-transform"
               />
 
-              {/* Terracotta circle — bottom left */}
+              {/* Terracotta circle — enhanced with parallax */}
               <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ ease: [0.16, 1, 0.3, 1], duration: 0.8, delay: 0.6 }}
-                className="absolute -bottom-8 -left-8 w-28 h-28 rounded-full bg-accent/15 border border-accent/25"
+                initial={{ opacity: 0, x: -40, y: 20 }}
+                animate={{ opacity: 1, x: 0, y: 0 }}
+                transition={{ ease: EASING.bounce, duration: 0.9, delay: 0.5 }}
+                whileHover={{ x: -8, y: 8 }}
+                className="absolute -bottom-8 -left-8 w-28 h-28 rounded-full bg-gradient-to-br from-accent/20 to-accent/10 border border-accent/30 will-change-transform"
               />
 
-              {/* Teal circle — top right */}
+              {/* Teal circle — enhanced entrance */}
               <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ ease: [0.16, 1, 0.3, 1], duration: 0.8, delay: 0.7 }}
-                className="absolute -top-6 -right-6 w-16 h-16 rounded-full bg-primary/20 border border-primary/30"
+                initial={{ opacity: 0, x: 40, y: -20 }}
+                animate={{ opacity: 1, x: 0, y: 0 }}
+                transition={{ ease: EASING.bounce, duration: 0.9, delay: 0.6 }}
+                whileHover={{ x: 8, y: -8 }}
+                className="absolute -top-6 -right-6 w-16 h-16 rounded-full bg-gradient-to-br from-primary/30 to-primary/15 border border-primary/40 will-change-transform"
               />
 
-              {/* Central SVG geometric pattern */}
+              {/* Central SVG with animated draw effect */}
               <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.3 }}
-                transition={{ ease: [0.16, 1, 0.3, 1], duration: 1.0, delay: 0.5 }}
-                className="absolute inset-0 flex items-center justify-center"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 0.4 }}
+                transition={{ ease: EASING.smooth, duration: 1.2, delay: 0.4 }}
+                whileHover={{ scale: 1.05, opacity: 0.6 }}
+                className="absolute inset-0 flex items-center justify-center will-change-transform"
               >
-                <svg width="220" height="220" viewBox="0 0 220 220" fill="none" aria-hidden="true">
-                  <circle cx="110" cy="110" r="90" stroke="hsl(172,70%,39%)" strokeWidth="1.5" strokeDasharray="8 6" />
+                <motion.svg
+                  width="220"
+                  height="220"
+                  viewBox="0 0 220 220"
+                  fill="none"
+                  aria-hidden="true"
+                  animate={{ rotate: 360 }}
+                  transition={{ repeat: Infinity, duration: 80, ease: 'linear' }}
+                  style={{ willChange: 'transform' }}
+                >
+                  <motion.circle
+                    cx="110"
+                    cy="110"
+                    r="90"
+                    stroke="hsl(172,70%,39%)"
+                    strokeWidth="1.5"
+                    strokeDasharray="8 6"
+                    initial={{ strokeDashoffset: 0 }}
+                    animate={{ strokeDashoffset: -14 }}
+                    transition={{ repeat: Infinity, duration: 20, ease: 'linear' }}
+                  />
                   <circle cx="110" cy="110" r="62" stroke="hsl(172,70%,39%)" strokeWidth="1" opacity="0.5" />
-                  <circle cx="110" cy="110" r="22" fill="hsl(172,70%,39%)" opacity="0.2" />
+                  <motion.circle
+                    cx="110"
+                    cy="110"
+                    r="22"
+                    fill="hsl(172,70%,39%)"
+                    opacity="0.2"
+                    animate={{ r: [20, 26, 20] }}
+                    transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
+                  />
                   <circle cx="175" cy="65" r="13" fill="hsl(20,70%,55%)" opacity="0.4" />
                   <circle cx="45" cy="165" r="9" fill="hsl(172,70%,39%)" opacity="0.5" />
                   <circle cx="180" cy="160" r="6" fill="hsl(20,70%,55%)" opacity="0.3" />
-                </svg>
+                </motion.svg>
               </motion.div>
 
-              {/* Floating stat chips */}
+              {/* Floating stat chips with better entrance and interaction */}
               {floatingStats.map((stat, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={[
-                    { opacity: 1, y: 0, transition: { ease: [0.16, 1, 0.3, 1], duration: 0.7, delay: 0.7 + i * 0.15 } },
-                  ]}
-                  className={`absolute px-4 py-3 bg-background rounded-xl shadow-card border border-border ${
+                  initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{
+                    ease: EASING.bounce,
+                    duration: 0.7,
+                    delay: 0.7 + i * 0.12,
+                  }}
+                  whileHover={{
+                    scale: 1.08,
+                    boxShadow: '0 12px 32px -8px hsl(172 70% 39% / 0.2)',
+                  }}
+                  className={`absolute px-4 py-3 bg-background rounded-xl shadow-card border border-border will-change-transform ${
                     i === 0 ? 'top-8 left-6' : i === 1 ? 'bottom-12 right-6' : 'bottom-36 left-4'
                   }`}
                 >
                   <motion.div
                     animate={{ y: stat.y }}
                     transition={{ repeat: Infinity, duration: 4 + i, ease: 'easeInOut', delay: stat.delay }}
+                    style={{ willChange: 'transform' }}
                   >
                     <p className="text-xs text-muted-foreground font-medium">{stat.label}</p>
                     <p className={`text-xl font-bold ${stat.color}`}>{stat.value}</p>
