@@ -1,79 +1,80 @@
-import ZigzagSection from './ZigzagSection';
-import { BookOpen, Briefcase, Clock, Users } from 'lucide-react';
-import sectionImage from '@/assets/section4.png';
+import { BookOpen, Briefcase } from 'lucide-react';
 
 const Differentiation = () => {
+  const phases = [
+    {
+      icon: BookOpen,
+      phase: '1',
+      title: 'Formation intensive',
+      duration: '2 semaines',
+      details: ['Format accéléré et orienté pratique', 'Apprentissage des 5 blocs opérationnels', 'Cas concrets du marché marocain'],
+    },
+    {
+      icon: Briefcase,
+      phase: '2',
+      title: 'Immersion en entreprise',
+      duration: '2 mois',
+      details: ['Missions RH réelles avec suivi structuré', 'Intégration en entreprise partenaire', 'Mise en pratique des compétences'],
+    },
+  ];
+
   return (
-    <ZigzagSection
-      title="Structure du Programme en 2 Phases"
-      subtitle="Une architecture en deux temps garantit une montée en compétences rapide avant une mise en situation professionnelle réelle."
-      reverse={true}
-      bgColor="linear-gradient(135deg, #FFFFFF 0%, #F8F9FA 50%, #F0F1F3 100%)"
-      illustration={
-        <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-          <img 
-            src={sectionImage} 
-            alt="Structure du programme" 
-            className="w-full h-auto object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-        </div>
-      }
-    >
-      <div className="space-y-6">
-        <div className="bg-primary/5 rounded-xl p-5 border border-primary/20">
+    <section className="py-20 md:py-32 bg-secondary w-full overflow-hidden">
+      <div className="container-custom w-full">
+        <div className="max-w-3xl mx-auto space-y-12 text-center">
+          {/* Section Header */}
           <div className="space-y-4">
-            <div className="flex items-start gap-4 justify-center lg:justify-start">
-              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <BookOpen className="w-5 h-5 text-primary" />
-              </div>
-              <div className="text-left">
-                <h4 className="font-bold text-foreground mb-1">Phase 1 : Formation intensive</h4>
-                <p className="text-sm text-muted-foreground">2 semaines</p>
-              </div>
-            </div>
-            
-            <div className="border-l-2 border-primary/30 pl-4 ml-5">
-              <ul className="space-y-2">
-                <li className="text-sm text-muted-foreground flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  Format accéléré et orienté pratique
-                </li>
-              </ul>
-            </div>
+            <p className="text-primary font-semibold text-sm uppercase tracking-wide">Programme</p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground">
+              Structure du Programme
+              <br />
+              <span className="text-primary">en 2 Phases</span>
+            </h2>
+            <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+              Une architecture en deux temps garantit une montée en compétences rapide avant une mise en situation professionnelle réelle.
+            </p>
           </div>
-        </div>
 
-        <div className="bg-primary/5 rounded-xl p-5 border border-primary/20">
-          <div className="space-y-4">
-            <div className="flex items-start gap-4 justify-center lg:justify-start">
-              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <Briefcase className="w-5 h-5 text-primary" />
+          {/* Phases Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {phases.map((phase, index) => (
+              <div
+                key={index}
+                className="p-6 bg-background/50 rounded-xl border border-primary/20 space-y-4"
+              >
+                {/* Phase Number */}
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+                    <span className="text-white font-bold text-lg">{phase.phase}</span>
+                  </div>
+                  <div className="text-left">
+                    <h3 className="font-bold text-foreground text-lg">{phase.title}</h3>
+                    <p className="text-sm text-primary font-semibold">{phase.duration}</p>
+                  </div>
+                </div>
+
+                {/* Phase Details */}
+                <ul className="space-y-2 pt-2">
+                  {phase.details.map((detail, idx) => (
+                    <li key={idx} className="text-sm text-muted-foreground flex items-start gap-3">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0" />
+                      {detail}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <div className="text-left">
-                <h4 className="font-bold text-foreground mb-1">Phase 2 : Immersion en entreprise</h4>
-                <p className="text-sm text-muted-foreground">2 mois</p>
-              </div>
-            </div>
-            
-            <div className="border-l-2 border-primary/30 pl-4 ml-5">
-              <ul className="space-y-2">
-                <li className="text-sm text-muted-foreground flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  Missions RH réelles avec suivi structuré
-                </li>
-              </ul>
-            </div>
+            ))}
           </div>
-        </div>
 
-        <div className="p-4 bg-primary/10 rounded-xl border border-primary/20 text-center">
-          <p className="text-sm font-semibold text-muted-foreground">
-            <span className="text-primary">La formation prépare, l&apos;immersion confirme et consolide.</span>
-          </p>
+          {/* Tagline */}
+          <div className="p-6 bg-primary/5 rounded-xl border border-primary/30 space-y-2 max-w-2xl mx-auto">
+            <p className="text-foreground font-semibold text-lg">
+              La formation prépare, l&apos;immersion <span className="text-primary">confirme et consolide</span>
+            </p>
+          </div>
         </div>
       </div>
-    </ZigzagSection>
+    </section>
   );
 };
 

@@ -1,6 +1,4 @@
-import ZigzagSection from './ZigzagSection';
 import { Users, DollarSign, AlertTriangle, BarChart3, MessageSquare } from 'lucide-react';
-import sectionImage from '@/assets/section5.png';
 
 const PersonnelCostBenefits = () => {
   const blocks = [
@@ -37,54 +35,59 @@ const PersonnelCostBenefits = () => {
   ];
 
   return (
-    <ZigzagSection
-      title="Contenu Pédagogique : 5 Blocs Opérationnels"
-      subtitle="Chaque bloc prépare à maîtriser une fonction RH essentielle avec des cas concrets du marché marocain."
-      reverse={false}
-      bgColor="linear-gradient(135deg, #E6F3FF 0%, #B3D9FF 50%, #80BFFF 100%)"
-      illustration={
-        <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-          <img 
-            src={sectionImage} 
-            alt="5 Blocs opérationnels du programme" 
-            className="w-full h-auto object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-        </div>
-      }
-    >
-      <div className="space-y-4">
-        {blocks.map((block, index) => (
-          <div
-            key={index}
-            className="p-4 bg-primary/5 rounded-xl border border-primary/20 justify-center lg:justify-start"
-          >
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
-                <span className="text-white font-bold text-sm">{block.number}</span>
-              </div>
-              <div className="text-left flex-1">
-                <h4 className="font-bold text-foreground mb-2">{block.title}</h4>
-                <ul className="space-y-1">
-                  {block.details.map((detail, idx) => (
-                    <li key={idx} className="text-xs sm:text-sm text-muted-foreground flex items-start gap-2">
-                      <span className="w-1 h-1 rounded-full bg-primary mt-1.5 flex-shrink-0" />
-                      {detail}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+    <section className="py-20 md:py-32 bg-background w-full overflow-hidden">
+      <div className="container-custom w-full">
+        <div className="space-y-12">
+          {/* Section Header */}
+          <div className="max-w-3xl mx-auto space-y-4 text-center">
+            <p className="text-primary font-semibold text-sm uppercase tracking-wide">Contenu</p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground">
+              Contenu Pédagogique
+              <br />
+              <span className="text-primary">5 Blocs Opérationnels</span>
+            </h2>
+            <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+              Chaque bloc prépare à maîtriser une fonction RH essentielle avec des cas concrets du marché marocain.
+            </p>
           </div>
-        ))}
 
-        <div className="mt-4 p-4 bg-primary/10 rounded-xl border border-primary/20 text-center">
-          <p className="text-sm font-semibold text-muted-foreground">
-            <span className="text-primary">Maîtriser les 5 blocs = autonomie opérationnelle garantie.</span>
-          </p>
+          {/* Blocks Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+            {blocks.map((block, index) => (
+              <div
+                key={index}
+                className="p-5 bg-primary/5 rounded-lg border border-primary/20 space-y-3 hover:border-primary/40 transition-colors"
+              >
+                {/* Block Number */}
+                <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+                  <span className="text-white font-bold text-xs">{block.number}</span>
+                </div>
+
+                {/* Block Content */}
+                <div>
+                  <h4 className="font-bold text-foreground text-sm">{block.title}</h4>
+                  <ul className="space-y-1 mt-2">
+                    {block.details.map((detail, idx) => (
+                      <li key={idx} className="text-xs text-muted-foreground flex items-start gap-2">
+                        <span className="w-1 h-1 rounded-full bg-primary mt-1 flex-shrink-0" />
+                        <span>{detail}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Summary Message */}
+          <div className="max-w-3xl mx-auto p-6 bg-primary/5 rounded-xl border border-primary/30 text-center">
+            <p className="text-foreground font-semibold text-lg">
+              Maîtriser les 5 blocs = <span className="text-primary">autonomie opérationnelle garantie</span>
+            </p>
+          </div>
         </div>
       </div>
-    </ZigzagSection>
+    </section>
   );
 };
 
