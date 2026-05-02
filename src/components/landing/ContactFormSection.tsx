@@ -146,7 +146,7 @@ const ContactFormSection = () => {
 
               <div className="space-y-2">
                 <Label htmlFor="message" className="text-foreground font-medium">
-                  Décrivez votre besoin RH<span className="text-destructive">*</span>
+                  Parlez-nous de vous<span className="text-destructive">*</span>
                 </Label>
                 <Textarea
                   id="message"
@@ -154,7 +154,7 @@ const ContactFormSection = () => {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  placeholder="Ex: Externalisation de la paie, recrutement, audit social..."
+                  placeholder="Votre profil, vos objectifs, votre expérience actuelle..."
                   className="bg-background border-border min-h-[120px]"
                 />
               </div>
@@ -166,7 +166,7 @@ const ContactFormSection = () => {
                 className="w-full text-base font-semibold"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? 'Envoi en cours...' : 'Demander un devis personnalisé'}
+                {isSubmitting ? 'Envoi en cours...' : 'Soumettre mon candidature'}
               </ShimmerButton>
             </form>
           </div>

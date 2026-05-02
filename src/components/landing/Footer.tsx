@@ -10,7 +10,7 @@ const Footer = () => {
           <div className="space-y-6">
             <img src={logo} alt="World Wide Progress" className="h-12" />
             <p className="text-sm leading-relaxed text-muted-foreground">
-              Votre partenaire RH d'excellence pour transformer vos défis en opportunités de croissance.
+              Formation RH intensive qui transforme des profils juniors en praticiens opérationnels dans les entreprises marocaines.
             </p>
             <div className="flex items-center gap-4">
               <a
