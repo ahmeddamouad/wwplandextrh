@@ -4,6 +4,8 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  // Static assets directory - automatically copied to dist on build
+  publicDir: 'public',
   server: {
     host: "::",
     port: 8080,
@@ -21,5 +23,9 @@ export default defineConfig({
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
+  },
+  build: {
+    // Ensure public directory is copied during build
+    copyPublicDir: true,
   },
 });
