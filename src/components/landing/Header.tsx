@@ -10,10 +10,13 @@ const EASING = {
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showCTA, setShowCTA] = useState(true);
-  const scrollTimeoutRef = useRef(null);
+  
+  // Refs for visibility tracking
+  const formSectionRef = useRef<HTMLElement | null>(null);
+  const finalCtaRef = useRef<HTMLElement | null>(null);
+  const footerRef = useRef<HTMLElement | null>(null);
 
   const scrollToForm = () => {
-    setShowCTA(false);
     const formSection = document.getElementById('contact-form');
     formSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
@@ -21,6 +24,7 @@ const Header = () => {
   useEffect(() => {
     let ticking = false;
 
+    // Simple scroll listener for header background
     const handleScroll = () => {
       if (!ticking) {
         requestAnimationFrame(() => {
@@ -29,33 +33,31 @@ const Header = () => {
         });
         ticking = true;
       }
-
-      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
-
-      scrollTimeoutRef.current = setTimeout(() => {
-        const formSection = document.getElementById('contact-form');
-        const finalCTA = document.getElementById('contact');
-        const footer = document.querySelector('footer');
-
-        if (formSection && finalCTA && footer) {
-          const formRect = formSection.getBoundingClientRect();
-          const finalCTARect = finalCTA.getBoundingClientRect();
-          const footerRect = footer.getBoundingClientRect();
-          const windowHeight = window.innerHeight;
-
-          const inFinalCTA = finalCTARect.top < windowHeight * 0.5 && finalCTARect.bottom > windowHeight * 0.2;
-          const inFormSection = formRect.top < windowHeight * 0.5 && formRect.bottom > 0;
-          const inFooter = footerRect.top < windowHeight;
-
-          setShowCTA(inFinalCTA || inFooter || !inFormSection);
-        }
-      }, 100);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+
+    // Use IntersectionObserver for CTA visibility (non-blocking)
+    const observerOptions = {
+      threshold: 0.5,
+      rootMargin: '0px 0px -50px 0px',
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      // Check if any target is intersecting
+      const anyVisible = entries.some((entry) => entry.isIntersecting);
+      setShowCTA(!anyVisible);
+    }, observerOptions);
+
+    // Observe form section
+    const formSection = document.getElementById('contact-form');
+    if (formSection) {
+      observer.observe(formSection);
+    }
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+      observer.disconnect();
     };
   }, []);
 
@@ -70,19 +72,19 @@ const Header = () => {
         style={{ transform: 'translate3d(0, 0, 0)' }}
       >
         <div className="container-custom relative flex items-center justify-between">
-          {/* Logo */}
-          <div
-            className={`flex items-center transition-all duration-300 will-change-[flex] ${
-              showCTA ? '' : 'flex-1 justify-center'
-            }`}
+          {/* Logo - no conflicting CSS transitions */}
+          <motion.div
+            layout
+            className="flex items-center"
+            transition={{ ease: EASING.smooth, duration: 0.25 }}
             style={{ transform: 'translate3d(0, 0, 0)' }}
           >
             <motion.a
               href="#"
-              className="flex items-center"
+              className="flex items-center flex-shrink-0"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
-              transition={{ ease: EASING.smooth, duration: 0.2 }}
+              transition={{ ease: EASING.smooth, duration: 0.15 }}
               style={{ willChange: 'transform' }}
             >
               <img
@@ -97,18 +99,18 @@ const Header = () => {
                 }}
               />
             </motion.a>
-          </div>
+          </motion.div>
 
           {/* Desktop CTA */}
-          <div className="hidden lg:flex items-center will-change-[opacity]" style={{ transform: 'translate3d(0, 0, 0)' }}>
+          <div className="hidden lg:flex items-center" style={{ transform: 'translate3d(0, 0, 0)' }}>
             <AnimatePresence mode="wait">
               {showCTA && (
                 <motion.div
                   key="desktop-cta"
-                  initial={{ opacity: 0, y: -8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ ease: EASING.smooth, duration: 0.3 }}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ ease: EASING.smooth, duration: 0.2 }}
                   style={{ willChange: 'opacity, transform' }}
                 >
                   <ShimmerButton
@@ -130,10 +132,10 @@ const Header = () => {
               {showCTA && (
                 <motion.div
                   key="mobile-cta"
-                  initial={{ opacity: 0, y: -8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ ease: [0.16, 1, 0.3, 1], duration: 0.35 }}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ ease: EASING.smooth, duration: 0.2 }}
                 >
                   <ShimmerButton
                     onClick={scrollToForm}

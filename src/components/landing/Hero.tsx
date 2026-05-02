@@ -173,21 +173,16 @@ const Hero = () => {
                     delay: 0.7 + i * 0.12,
                   }}
                   whileHover={{
-                    scale: 1.08,
+                    scale: 1.05,
                     boxShadow: '0 12px 32px -8px hsl(172 70% 39% / 0.2)',
                   }}
                   className={`absolute px-4 py-3 bg-background rounded-xl shadow-card border border-border will-change-transform z-10 ${
                     i === 0 ? 'top-8 left-6' : i === 1 ? 'bottom-12 right-6' : 'bottom-36 left-4'
                   }`}
+                  style={{ transform: 'translate3d(0, 0, 0)' }}
                 >
-                  <motion.div
-                    animate={{ y: stat.y }}
-                    transition={{ repeat: Infinity, duration: 4 + i, ease: 'easeInOut', delay: stat.delay }}
-                    style={{ willChange: 'transform' }}
-                  >
-                    <p className="text-xs text-muted-foreground font-medium">{stat.label}</p>
-                    <p className={`text-xl font-bold ${stat.color}`}>{stat.value}</p>
-                  </motion.div>
+                  <p className="text-xs text-muted-foreground font-medium">{stat.label}</p>
+                  <p className={`text-xl font-bold ${stat.color}`}>{stat.value}</p>
                 </motion.div>
               ))}
 
