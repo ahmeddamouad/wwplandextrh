@@ -185,7 +185,7 @@ const Hero = () => {
                 muted
                 loop
                 playsInline
-                className="absolute inset-0 w-full h-full object-cover bg-transparent rounded-[40px]"
+                className="absolute inset-0 w-full h-full object-contain bg-transparent rounded-[40px]"
               >
                 <source src="/logo.mp4" type="video/mp4" />
               </motion.video>
