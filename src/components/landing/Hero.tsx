@@ -143,80 +143,23 @@ const Hero = () => {
             </motion.div>
           </motion.div>
 
-          {/* RIGHT COLUMN — Decorative visual */}
+          {/* RIGHT COLUMN — Video display */}
           <div className="hidden md:flex items-center justify-center relative">
             <div className="relative w-full max-w-sm aspect-[4/5]">
 
-              {/* Background shape with morphing animation */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9, borderRadius: '20px' }}
+              {/* Video element */}
+              <motion.video
+                initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ ease: EASING.expo, duration: 1, delay: 0.3 }}
-                className="absolute inset-0 bg-gradient-to-br from-primary/8 to-primary/4 rounded-[40px] will-change-transform"
-              />
-
-              {/* Terracotta circle — enhanced with parallax */}
-              <motion.div
-                initial={{ opacity: 0, x: -40, y: 20 }}
-                animate={{ opacity: 1, x: 0, y: 0 }}
-                transition={{ ease: EASING.bounce, duration: 0.9, delay: 0.5 }}
-                whileHover={{ x: -8, y: 8 }}
-                className="absolute -bottom-8 -left-8 w-28 h-28 rounded-full bg-gradient-to-br from-accent/20 to-accent/10 border border-accent/30 will-change-transform"
-              />
-
-              {/* Teal circle — enhanced entrance */}
-              <motion.div
-                initial={{ opacity: 0, x: 40, y: -20 }}
-                animate={{ opacity: 1, x: 0, y: 0 }}
-                transition={{ ease: EASING.bounce, duration: 0.9, delay: 0.6 }}
-                whileHover={{ x: 8, y: -8 }}
-                className="absolute -top-6 -right-6 w-16 h-16 rounded-full bg-gradient-to-br from-primary/30 to-primary/15 border border-primary/40 will-change-transform"
-              />
-
-              {/* Central SVG with animated draw effect */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 0.4 }}
-                transition={{ ease: EASING.smooth, duration: 1.2, delay: 0.4 }}
-                whileHover={{ scale: 1.05, opacity: 0.6 }}
-                className="absolute inset-0 flex items-center justify-center will-change-transform"
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover rounded-[40px]"
               >
-                <motion.svg
-                  width="220"
-                  height="220"
-                  viewBox="0 0 220 220"
-                  fill="none"
-                  aria-hidden="true"
-                  animate={{ rotate: 360 }}
-                  transition={{ repeat: Infinity, duration: 80, ease: 'linear' }}
-                  style={{ willChange: 'transform' }}
-                >
-                  <motion.circle
-                    cx="110"
-                    cy="110"
-                    r="90"
-                    stroke="hsl(172,70%,39%)"
-                    strokeWidth="1.5"
-                    strokeDasharray="8 6"
-                    initial={{ strokeDashoffset: 0 }}
-                    animate={{ strokeDashoffset: -14 }}
-                    transition={{ repeat: Infinity, duration: 20, ease: 'linear' }}
-                  />
-                  <circle cx="110" cy="110" r="62" stroke="hsl(172,70%,39%)" strokeWidth="1" opacity="0.5" />
-                  <motion.circle
-                    cx="110"
-                    cy="110"
-                    r="22"
-                    fill="hsl(172,70%,39%)"
-                    opacity="0.2"
-                    animate={{ r: [20, 26, 20] }}
-                    transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
-                  />
-                  <circle cx="175" cy="65" r="13" fill="hsl(20,70%,55%)" opacity="0.4" />
-                  <circle cx="45" cy="165" r="9" fill="hsl(172,70%,39%)" opacity="0.5" />
-                  <circle cx="180" cy="160" r="6" fill="hsl(20,70%,55%)" opacity="0.3" />
-                </motion.svg>
-              </motion.div>
+                <source src="/logo.mp4" type="video/mp4" />
+              </motion.video>
 
               {/* Floating stat chips with better entrance and interaction */}
               {floatingStats.map((stat, i) => (
@@ -233,7 +176,7 @@ const Hero = () => {
                     scale: 1.08,
                     boxShadow: '0 12px 32px -8px hsl(172 70% 39% / 0.2)',
                   }}
-                  className={`absolute px-4 py-3 bg-background rounded-xl shadow-card border border-border will-change-transform ${
+                  className={`absolute px-4 py-3 bg-background rounded-xl shadow-card border border-border will-change-transform z-10 ${
                     i === 0 ? 'top-8 left-6' : i === 1 ? 'bottom-12 right-6' : 'bottom-36 left-4'
                   }`}
                 >

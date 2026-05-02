@@ -3,6 +3,10 @@ import { ArrowRight, Users, Zap, GraduationCap, Check } from 'lucide-react';
 import { motion } from 'framer-motion';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 
+const EASING = {
+  smooth: [0.25, 0.46, 0.45, 0.94],
+};
+
 const FinalCTA = () => {
   const scrollToForm = () => {
     const formSection = document.getElementById('contact-form');
@@ -65,14 +69,16 @@ const FinalCTA = () => {
           {/* Urgency banner with subtle pulse */}
           <ScrollReveal delay={0.15}>
             <motion.div
-              animate={{ scale: [1, 1.015, 1] }}
-              transition={{ repeat: Infinity, duration: 2.8, ease: 'easeInOut' }}
-              className="p-4 rounded-xl bg-accent/10 border border-accent/35 text-center"
+              animate={{ opacity: [1, 0.85, 1] }}
+              transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }}
+              className="p-4 rounded-xl bg-accent/10 border border-accent/35 text-center will-change-[opacity]"
+              style={{ transform: 'translate3d(0, 0, 0)' }}
             >
               <p className="font-bold text-accent flex items-center justify-center gap-2 text-sm">
                 <motion.span
                   animate={{ opacity: [1, 0.3, 1] }}
-                  transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}
+                  transition={{ repeat: Infinity, duration: 1.8, ease: 'easeInOut' }}
+                  style={{ willChange: 'opacity' }}
                 >
                   ●
                 </motion.span>
@@ -103,10 +109,11 @@ const FinalCTA = () => {
                       viewport={{ once: true }}
                       transition={{
                         delay: 0.3 + index * 0.08,
-                        ease: [0.16, 1, 0.3, 1],
+                        ease: EASING.smooth,
                         duration: 0.6,
                       }}
-                      className="flex items-start gap-3"
+                      className="flex items-start gap-3 will-change-[opacity,transform]"
+                      style={{ transform: 'translate3d(0, 0, 0)' }}
                     >
                       <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                       <span className="text-muted-foreground">{feature}</span>
@@ -123,9 +130,10 @@ const FinalCTA = () => {
                     {paymentOptions.map((option, index) => (
                       <motion.div
                         key={index}
-                        whileHover={{ y: -3, scale: 1.02 }}
-                        transition={{ ease: [0.16, 1, 0.3, 1], duration: 0.25 }}
-                        className="p-4 bg-primary/5 rounded-xl border border-primary/20 text-center cursor-default"
+                        whileHover={{ y: -4 }}
+                        transition={{ ease: EASING.smooth, duration: 0.25 }}
+                        className="p-4 bg-primary/5 rounded-xl border border-primary/20 text-center cursor-default will-change-transform"
+                        style={{ transform: 'translate3d(0, 0, 0)' }}
                       >
                         <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
                           {option.label}

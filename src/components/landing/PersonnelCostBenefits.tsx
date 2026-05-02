@@ -3,6 +3,10 @@ import { motion } from 'framer-motion';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import MarqueeTrack from '@/components/ui/MarqueeTrack';
 
+const EASING = {
+  smooth: [0.25, 0.46, 0.45, 0.94],
+};
+
 const PersonnelCostBenefits = () => {
   const blocks = [
     {
@@ -74,9 +78,10 @@ const PersonnelCostBenefits = () => {
         {blocks.map((block, index) => (
           <motion.div
             key={index}
-            whileHover={{ y: -8 }}
-            transition={{ ease: [0.16, 1, 0.3, 1], duration: 0.3 }}
-            className="flex-shrink-0 w-56 p-6 bg-primary/5 border border-primary/20 rounded-2xl space-y-4 cursor-default select-none"
+            whileHover={{ y: -6 }}
+            transition={{ ease: EASING.smooth, duration: 0.25 }}
+            className="flex-shrink-0 w-56 p-6 bg-primary/5 border border-primary/20 rounded-2xl space-y-4 cursor-default select-none will-change-transform"
+            style={{ transform: 'translate3d(0, 0, 0)' }}
           >
             <div className="flex items-center gap-3">
               <span className="inline-flex w-8 h-8 rounded-full bg-primary items-center justify-center text-white text-xs font-bold flex-shrink-0">

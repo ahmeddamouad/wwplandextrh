@@ -10,6 +10,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Loader2 } from 'lucide-react';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 
+const EASING = {
+  smooth: [0.25, 0.46, 0.45, 0.94],
+};
+
 const ContactFormSection = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
@@ -106,8 +110,9 @@ const ContactFormSection = () => {
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.1 }}
-            transition={{ ease: [0.16, 1, 0.3, 1], duration: 0.75, delay: 0.1 }}
-            className="bg-white rounded-2xl p-6 sm:p-8 border border-primary/10 shadow-[0_8px_40px_-12px_hsl(172_70%_39%_/_0.12)] ring-1 ring-primary/10"
+            transition={{ ease: EASING.smooth, duration: 0.6, delay: 0.1 }}
+            className="bg-white rounded-2xl p-6 sm:p-8 border border-primary/10 shadow-[0_8px_40px_-12px_hsl(172_70%_39%_/_0.12)] ring-1 ring-primary/10 will-change-[opacity,transform]"
+            style={{ transform: 'translate3d(0, 0, 0)' }}
           >
             <form onSubmit={handleSubmit} className="space-y-6">
 
@@ -116,8 +121,9 @@ const ContactFormSection = () => {
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ ease: [0.16, 1, 0.3, 1], duration: 0.6, delay: 0.1 }}
-                className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+                transition={{ ease: EASING.smooth, duration: 0.5, delay: 0.15 }}
+                className="grid grid-cols-1 sm:grid-cols-2 gap-4 will-change-[opacity,transform]"
+                style={{ transform: 'translate3d(0, 0, 0)' }}
               >
                 <div className="field-group space-y-2">
                   <Label htmlFor="fullName" className="text-foreground font-medium transition-colors duration-200">
@@ -155,8 +161,9 @@ const ContactFormSection = () => {
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ ease: [0.16, 1, 0.3, 1], duration: 0.6, delay: 0.2 }}
-                className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+                transition={{ ease: EASING.smooth, duration: 0.5, delay: 0.2 }}
+                className="grid grid-cols-1 sm:grid-cols-2 gap-4 will-change-[opacity,transform]"
+                style={{ transform: 'translate3d(0, 0, 0)' }}
               >
                 <div className="field-group space-y-2">
                   <Label htmlFor="company" className="text-foreground font-medium transition-colors duration-200">
@@ -193,8 +200,9 @@ const ContactFormSection = () => {
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ ease: [0.16, 1, 0.3, 1], duration: 0.6, delay: 0.3 }}
-                className="field-group space-y-2"
+                transition={{ ease: EASING.smooth, duration: 0.5, delay: 0.25 }}
+                className="field-group space-y-2 will-change-[opacity,transform]"
+                style={{ transform: 'translate3d(0, 0, 0)' }}
               >
                 <Label htmlFor="message" className="text-foreground font-medium transition-colors duration-200">
                   Parlez-nous de vous<span className="text-destructive">*</span>
@@ -225,7 +233,7 @@ const ContactFormSection = () => {
                       initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -8 }}
-                      transition={{ ease: [0.16, 1, 0.3, 1], duration: 0.2 }}
+                      transition={{ ease: EASING.smooth, duration: 0.15 }}
                       className="flex items-center gap-2"
                     >
                       <Loader2 className="w-4 h-4 animate-spin" />
@@ -237,7 +245,7 @@ const ContactFormSection = () => {
                       initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -8 }}
-                      transition={{ ease: [0.16, 1, 0.3, 1], duration: 0.2 }}
+                      transition={{ ease: EASING.smooth, duration: 0.15 }}
                     >
                       Soumettre ma candidature
                     </motion.span>

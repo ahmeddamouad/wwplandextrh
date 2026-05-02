@@ -123,9 +123,9 @@ const PainPoints = () => {
               })}
             </div>
 
-            {/* Card 3 — full width bottom */}
+            {/* Card 3 — positioned right column under small cards */}
             {lastCard && LastIcon && (
-              <div className="md:col-span-2">
+              <div>
                 <ScrollReveal direction="up" delay={0.4}>
                   <motion.div
                     whileHover={{
