@@ -88,7 +88,7 @@ const Header = () => {
             shimmerColor="#ffffff"
             className="text-base font-semibold"
           >
-            Demander un devis personnalisé
+            S&apos;inscrire au programme
           </ShimmerButton>
         </div>
 
@@ -102,7 +102,7 @@ const Header = () => {
             shimmerColor="#ffffff"
             className="text-sm font-semibold px-4 py-2"
           >
-            Demander un devis personnalisé
+            S&apos;inscrire
           </ShimmerButton>
         </div>
       </div>
