@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { BookOpen, Users, Briefcase, Target, ArrowRight } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ShimmerButton } from '@/components/ui/shimmer-button';
 
 // Premium easing curves for authentic motion
@@ -52,33 +52,10 @@ const Hero = () => {
   ];
 
   const floatingStats = [
-    { label: 'Formation', value: '2 sem.', color: 'text-primary', delay: 0.5, y: [0, -8, 0] },
-    { label: 'Immersion', value: '2 mois', color: 'text-accent', delay: 1.5, y: [0, -6, 0] },
-    { label: 'Modules', value: '7', color: 'text-foreground', delay: 2.5, y: [0, -10, 0] },
+    { label: 'Formation', value: '2 sem.', color: 'text-primary', delay: 0.08 },
+    { label: 'Immersion', value: '2 mois', color: 'text-accent', delay: 0.12 },
+    { label: 'Modules', value: '7', color: 'text-foreground', delay: 0.16 },
   ];
-
-  const videoRef = useRef<HTMLDivElement | null>(null);
-  const [showStats, setShowStats] = useState(false);
-
-  useEffect(() => {
-    const el = videoRef.current;
-    if (!el) return;
-    let mounted = true;
-    const obs = new IntersectionObserver(
-      (entries) => {
-        if (!mounted) return;
-        const e = entries[0];
-        // show stats only when at least half of the video container is visible
-        setShowStats(e.isIntersecting && e.intersectionRatio >= 0.5);
-      },
-      { threshold: [0.5] }
-    );
-    obs.observe(el);
-    return () => {
-      mounted = false;
-      obs.disconnect();
-    };
-  }, []);
 
   return (
     <section className="relative min-h-[100dvh] flex items-center bg-background w-full overflow-hidden pt-20">
@@ -168,16 +145,10 @@ const Hero = () => {
 
           {/* RIGHT COLUMN — Video display */}
           <div className="hidden md:flex items-center justify-center relative">
-            <div ref={videoRef} className="relative w-full max-w-2xl aspect-auto h-[550px]">
+            <div className="relative w-full max-w-2xl aspect-auto h-[550px]">
 
               {/* Video element */}
               <motion.video
-                ref={(el) => {
-                  /* keep a reference on the actual <video> node as well for future hooks */
-                  /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
-                  // @ts-ignore
-                  videoRef.current = videoRef.current || (el && el.parentElement) || null;
-                }}
                 initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ ease: EASING.expo, duration: 0.6, delay: 0.15 }}
@@ -190,49 +161,37 @@ const Hero = () => {
                 <source src="/logo.mp4" type="video/mp4" />
               </motion.video>
 
-              {/* Floating stat chips - animated in/out like they're part of video */}
-              <AnimatePresence mode="popLayout">
-                {showStats &&
-                  floatingStats.map((stat, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, scale: 0 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0 }}
-                      transition={{
-                        ease: EASING.bounce,
-                        duration: 0.45,
-                        delay: 0.3 + i * 0.08,
-                      }}
-                        whileHover={{
-                          scale: 1.06,
-                          boxShadow: '0 12px 32px -6px hsl(172 70% 39% / 0.18)',
-                        }}
-                      >
-                        <div
-                          className={`absolute rounded-2xl p-[1px] bg-gradient-to-r from-primary/10 to-transparent z-10 ${
-                            i === 0 ? 'top-6 left-4' : i === 1 ? 'bottom-8 right-4' : 'top-6 right-4'
-                          }`}
-                        >
-                          <motion.div
-                            className="px-4 py-3 bg-background/95 rounded-[inherit] shadow-lg border border-border/60 will-change-transform"
-                            style={{ transform: 'translate3d(0, 0, 0)' }}
-                            initial={{ opacity: 0, scale: 0 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 0 }}
-                            transition={{
-                              ease: EASING.bounce,
-                              duration: 0.42,
-                              delay: stat.delay ?? 0.3 + i * 0.08,
-                            }}
-                          >
-                            <p className="text-xs text-muted-foreground font-medium uppercase tracking-wide">{stat.label}</p>
-                            <p className={`text-lg font-bold ${stat.color}`}>{stat.value}</p>
-                          </motion.div>
-                        </div>
-                      </motion.div>
-                  ))}
-              </AnimatePresence>
+              {/* Floating stat chips (persistent + lightweight animation for smoothness) */}
+              {floatingStats.map((stat, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 10, scale: 0.96 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{
+                    ease: EASING.smooth,
+                    duration: 0.28,
+                    delay: stat.delay,
+                  }}
+                  whileHover={{
+                    scale: 1.03,
+                  }}
+                  className="will-change-transform"
+                >
+                  <div
+                    className={`absolute rounded-2xl p-[1px] bg-gradient-to-r from-primary/10 to-transparent z-10 ${
+                      i === 0 ? 'top-20 left-5' : i === 1 ? 'bottom-20 right-5' : 'top-6 right-5'
+                    }`}
+                  >
+                    <div
+                      className="px-4 py-3 bg-background/95 rounded-[inherit] shadow-lg border border-border/60 will-change-transform"
+                      style={{ transform: 'translate3d(0, 0, 0)' }}
+                    >
+                      <p className="text-xs text-muted-foreground font-medium uppercase tracking-wide">{stat.label}</p>
+                      <p className={`text-lg font-bold ${stat.color}`}>{stat.value}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
 
             </div>
           </div>

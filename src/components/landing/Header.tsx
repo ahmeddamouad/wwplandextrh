@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShimmerButton } from '@/components/ui/shimmer-button';
 import logo from '@/assets/logo.png';
@@ -10,11 +10,6 @@ const EASING = {
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showCTA, setShowCTA] = useState(true);
-  
-  // Refs for visibility tracking
-  const formSectionRef = useRef<HTMLElement | null>(null);
-  const finalCtaRef = useRef<HTMLElement | null>(null);
-  const footerRef = useRef<HTMLElement | null>(null);
 
   const scrollToForm = () => {
     const formSection = document.getElementById('contact-form');
@@ -24,11 +19,24 @@ const Header = () => {
   useEffect(() => {
     let ticking = false;
 
-    // Simple scroll listener for header background
+    const updateHeaderState = () => {
+      setIsScrolled(window.scrollY > 20);
+
+      const formSection = document.getElementById('contact-form');
+      if (!formSection) return;
+
+      const rect = formSection.getBoundingClientRect();
+      const headerTriggerTop = 120;
+      const headerTriggerBottom = 220;
+      const isFormInView = rect.top <= headerTriggerTop && rect.bottom >= headerTriggerBottom;
+      setShowCTA(!isFormInView);
+    };
+
+    // RAF-batched scroll listener keeps transitions smooth.
     const handleScroll = () => {
       if (!ticking) {
         requestAnimationFrame(() => {
-          setIsScrolled(window.scrollY > 20);
+          updateHeaderState();
           ticking = false;
         });
         ticking = true;
@@ -36,28 +44,10 @@ const Header = () => {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-
-    // Use IntersectionObserver for CTA visibility (non-blocking)
-    const observerOptions = {
-      threshold: 0.5,
-      rootMargin: '0px 0px -50px 0px',
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      // Check if any target is intersecting
-      const anyVisible = entries.some((entry) => entry.isIntersecting);
-      setShowCTA(!anyVisible);
-    }, observerOptions);
-
-    // Observe form section
-    const formSection = document.getElementById('contact-form');
-    if (formSection) {
-      observer.observe(formSection);
-    }
+    updateHeaderState();
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      observer.disconnect();
     };
   }, []);
 
@@ -71,38 +61,67 @@ const Header = () => {
         }`}
         style={{ transform: 'translate3d(0, 0, 0)' }}
       >
-        <div className="container-custom relative flex items-center justify-between">
-          {/* Logo - no conflicting CSS transitions */}
-          <motion.div
-            layout
-            className="flex items-center"
-            transition={{ ease: EASING.smooth, duration: 0.25 }}
-            style={{ transform: 'translate3d(0, 0, 0)' }}
-          >
-            <motion.a
-              href="#"
-              className="flex items-center flex-shrink-0"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ ease: EASING.smooth, duration: 0.15 }}
-              style={{ willChange: 'transform' }}
-            >
-              <img
-                src={logo}
-                alt="World Wide Progress"
-                className="h-10 md:h-12 w-auto"
-                style={{
-                  imageRendering: '-webkit-optimize-contrast',
-                  transform: 'translate3d(0, 0, 0)',
-                  backfaceVisibility: 'hidden',
-                  willChange: 'transform',
-                }}
-              />
-            </motion.a>
-          </motion.div>
+        <div className="container-custom min-h-[56px] grid grid-cols-[1fr_auto_1fr] items-center">
+          <div className="flex items-center justify-start">
+            <AnimatePresence initial={false} mode="popLayout">
+              {showCTA && (
+                <motion.a
+                  key="logo-left"
+                  layoutId="header-logo"
+                  href="#"
+                  className="flex items-center flex-shrink-0"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ type: 'spring', stiffness: 380, damping: 36, mass: 0.7 }}
+                  style={{ willChange: 'transform' }}
+                >
+                  <img
+                    src={logo}
+                    alt="World Wide Progress"
+                    className="h-10 md:h-12 w-auto"
+                    style={{
+                      imageRendering: '-webkit-optimize-contrast',
+                      transform: 'translate3d(0, 0, 0)',
+                      backfaceVisibility: 'hidden',
+                      willChange: 'transform',
+                    }}
+                  />
+                </motion.a>
+              )}
+            </AnimatePresence>
+          </div>
+
+          <div className="flex items-center justify-center">
+            <AnimatePresence initial={false} mode="popLayout">
+              {!showCTA && (
+                <motion.a
+                  key="logo-center"
+                  layoutId="header-logo"
+                  href="#"
+                  className="flex items-center flex-shrink-0"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ type: 'spring', stiffness: 380, damping: 36, mass: 0.7 }}
+                  style={{ willChange: 'transform' }}
+                >
+                  <img
+                    src={logo}
+                    alt="World Wide Progress"
+                    className="h-10 md:h-12 w-auto"
+                    style={{
+                      imageRendering: '-webkit-optimize-contrast',
+                      transform: 'translate3d(0, 0, 0)',
+                      backfaceVisibility: 'hidden',
+                      willChange: 'transform',
+                    }}
+                  />
+                </motion.a>
+              )}
+            </AnimatePresence>
+          </div>
 
           {/* Desktop CTA */}
-          <div className="hidden lg:flex items-center" style={{ transform: 'translate3d(0, 0, 0)' }}>
+          <div className="hidden lg:flex items-center justify-end" style={{ transform: 'translate3d(0, 0, 0)' }}>
             <AnimatePresence mode="wait">
               {showCTA && (
                 <motion.div
@@ -127,7 +146,7 @@ const Header = () => {
           </div>
 
           {/* Mobile CTA */}
-          <div className="lg:hidden">
+          <div className="lg:hidden flex justify-end col-start-3">
             <AnimatePresence mode="wait">
               {showCTA && (
                 <motion.div
