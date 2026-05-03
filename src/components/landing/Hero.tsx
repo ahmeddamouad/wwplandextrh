@@ -89,8 +89,6 @@ const Hero = () => {
               variants={itemVariants}
               className="text-4xl sm:text-5xl md:text-[3.5rem] lg:text-6xl font-bold leading-[1.05] tracking-tight text-foreground"
             >
-              Maitrisez
-              <br />
               <span className="text-primary">Programme RH<br className="hidden sm:block" /> Accéléré</span>
             </motion.h1>
 
