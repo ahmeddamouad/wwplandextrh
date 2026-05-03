@@ -175,13 +175,11 @@ const Hero = () => {
                   whileHover={{
                     scale: 1.03,
                   }}
-                  className="will-change-transform"
+                  className={`absolute z-10 will-change-transform ${
+                    i === 0 ? 'top-20 left-5' : i === 1 ? 'bottom-20 right-5' : 'top-6 right-5'
+                  }`}
                 >
-                  <div
-                    className={`absolute rounded-2xl p-[1px] bg-gradient-to-r from-primary/10 to-transparent z-10 ${
-                      i === 0 ? 'top-20 left-5' : i === 1 ? 'bottom-20 right-5' : 'top-6 right-5'
-                    }`}
-                  >
+                  <div className="rounded-2xl p-[1px] bg-gradient-to-r from-primary/10 to-transparent">
                     <div
                       className="px-4 py-3 bg-background/95 rounded-[inherit] shadow-lg border border-border/60 will-change-transform"
                       style={{ transform: 'translate3d(0, 0, 0)' }}
